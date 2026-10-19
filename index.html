@@ -139,7 +139,11 @@ input:focus,textarea:focus{outline:none;border-color:var(--hy-blue);box-shadow:0
 .btn:focus-visible,a:focus-visible{outline:2px solid var(--hy-blue);outline-offset:2px}
 .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
 .actions .small{flex:1 1 260px}
-.actions .btn.primary{flex:0 1 220px;padding-block:14px}
+.actions .row{flex:0 0 auto;flex-wrap:nowrap}
+.actions .row .btn{white-space:nowrap}
+#resetBtn{padding-block:14px}
+@media (max-width:380px){.actions .row{flex-direction:column-reverse}.actions .row .btn{flex:1 1 auto;width:100%}}
+.actions .btn.primary{flex:0 1 200px;padding-block:14px}
 
 /* ---------- 관리자 ---------- */
 .login{max-width:420px;width:100%;margin:0 auto}
@@ -187,7 +191,9 @@ footer a{color:inherit}
   .avail{grid-template-columns:1fr}
   .dl{grid-template-columns:1fr;gap:2px}
   .dl dd{margin-bottom:10px}
-  .actions .btn.primary{flex:1 1 100%}
+  .actions .row{flex:1 1 100%}
+  .actions .row .btn{flex:1 1 0}
+  .actions .btn.primary{flex:1 1 0}
 }
 @media (hover:none){.drag-hint{display:none}}
 @media (min-width:1400px){body{font-size:16.5px}.inner{max-width:920px}}
@@ -369,7 +375,7 @@ footer a{color:inherit}
 
     <div class="actions">
       <span class="small" id="saveNote">* 표시는 필수 항목입니다.</span>
-      <button type="submit" class="btn primary" id="submitBtn">제출하기</button>
+      <span class="row"><button type="button" class="btn" id="resetBtn">입력 내용 지우기</button><button type="submit" class="btn primary" id="submitBtn">제출하기</button></span>
     </div>
   </form>
 </div>
@@ -440,7 +446,7 @@ const DEPTS = {"공과대학": ["건축학부", "건축공학부", "건설환경
 const OTHER = '기타 (직접 입력)';
 const DEFAULT_INST = '막스플랑크 연구소, 아헨공대, 드레스덴 공대, 율리히 연구소';
 const SENT_KEY = 'hy_bk_de_sent_v2';   // 같은 탭(세션)에서만 기억
-const DRAFT_KEY = 'hy_bk_de_draft_v1', PW_KEY = 'hy_bk_de_admin';
+const DRAFT_KEY = 'hy_bk_de_draft_v2', PW_KEY = 'hy_bk_de_admin';
 const S = { file:null, busy:false, rows:[], headers:[], open:null, pw:'' };
 
 /* ---------- 공통 ---------- */
@@ -537,6 +543,16 @@ function missing(d){
   if(!d.q3_avail) m.push(['b_q3','3번 수용 여부']);
   if(!d.q4_avail) m.push(['b_q4','4번 파견 여부']);
   return m;
+}
+function resetForm(){
+  if(!window.confirm('입력한 내용과 선택한 파일을 모두 지울까요?')) return;
+  clearTimeout(draftTimer);
+  form.reset(); S.file=null; $('f_file').value='';
+  store.del(DRAFT_KEY); store.del(SENT_KEY,true);
+  document.querySelectorAll('.invalid').forEach(e=>e.classList.remove('invalid'));
+  buildDepts(); sync(); counters(); renderFile(); refreshNote();
+  setStatus('','입력 내용을 모두 지웠습니다. 처음부터 작성해 주세요.');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 function refreshNote(){
   if(S.busy) return;
@@ -722,6 +738,7 @@ form.addEventListener('submit', onSubmit);
 form.addEventListener('input', e=>{ if(e.target.id==='f_email') renderFile(); sync(); counters(); const f=e.target.closest('.field.invalid'); if(f) f.classList.remove('invalid'); refreshNote(); saveDraft(); });
 form.addEventListener('change', e=>{ if(e.target.id==='f_college') buildDepts(); sync(); ['b_q3','b_q4'].forEach(id=>{ if(radio(id==='b_q3'?'q3_avail':'q4_avail')) $(id).classList.remove('invalid'); }); refreshNote(); saveDraft(); });
 $('pickBtn').onclick=()=>$('f_file').click();
+$('resetBtn').onclick=resetForm;
 $('f_file').onchange=e=>takeFile(e.target.files[0]);
 const drop=$('drop');
 ['dragenter','dragover'].forEach(t=>drop.addEventListener(t,e=>{ e.preventDefault(); drop.classList.add('over'); }));
@@ -735,7 +752,7 @@ $('list').addEventListener('click', e=>{ const b=e.target.closest('button[data-i
 window.addEventListener('hashchange', route);
 
 buildColleges(); applyConfig({});
-store.del('hy_bk_de_sent_v1');   // 예전 버전이 남긴 제출 기록 정리
+store.del('hy_bk_de_sent_v1'); store.del('hy_bk_de_draft_v1');   // 예전 버전이 남긴 테스트 기록 정리
 try{ const d=JSON.parse(store.get(DRAFT_KEY)||'null'); if(d) fill(d); }catch(e){}
 renderFile();
 sync(); counters(); refreshNote(); route();
