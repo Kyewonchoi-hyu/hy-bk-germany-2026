@@ -283,7 +283,7 @@ footer a{color:inherit}
     <div class="block">
       <div class="qhead"><span class="qnum">2</span><h2>방문 기관과 추진 가능한 연구협력 방안</h2>
         <p class="hint">해당하는 항목을 모두 고르고 구체적인 내용을 적어 주세요.</p></div>
-      <div class="field"><span class="label">협력 희망 기관<span class="help">여러 곳을 고르셔도 됩니다</span></span>
+      <div class="field"><span class="label">협력 희망 기관<span class="help">가급적 많이 선택하여 주시기 바랍니다.</span></span>
         <div class="choices" id="q2_insts">
           <label class="choice"><input type="checkbox" value="막스플랑크 연구소">막스플랑크 연구소</label>
           <label class="choice"><input type="checkbox" value="아헨공대">아헨공대</label>
@@ -310,22 +310,22 @@ footer a{color:inherit}
 
     <!-- 3 -->
     <div class="block" id="b_q3">
-      <div class="qhead"><span class="qnum">3</span><h2>향후 방문 기관의 학생·연구자를 교수님 연구실에서 수용하실 수 있습니까?</h2>
-        <p class="hint">실질적인 연구교류를 위한 단기 방문(인턴·방문연구) 수용 여부입니다.</p></div>
-      <div class="avail" role="radiogroup" aria-label="수용 가능 여부">
+      <div class="qhead"><span class="qnum">3</span><h2>향후 방문 기관의 학생·연구자를 교수님 연구실에 단기초청 등을 하실 의향이 있으십니까?</h2>
+        <p class="hint">실질적인 연구교류를 위한 단기 초청(인턴·방문연구) 여부입니다.</p></div>
+      <div class="avail" role="radiogroup" aria-label="초청 의향">
         <label class="choice"><input type="radio" name="q3_avail" value="가능">가능</label>
         <label class="choice"><input type="radio" name="q3_avail" value="조건부 가능">조건부 가능</label>
         <label class="choice"><input type="radio" name="q3_avail" value="어려움">어려움</label>
       </div>
       <div class="sub" id="q3_sub" hidden>
-        <div class="grid2"><div class="field"><label class="label" for="q3_count">수용 가능 인원 (명)</label><input type="number" id="q3_count" min="1" max="50" inputmode="numeric"></div></div>
+        <div class="grid2"><div class="field"><label class="label" for="q3_count">초청 가능 인원 (명)</label><input type="number" id="q3_count" min="1" max="50" inputmode="numeric"></div></div>
         <div class="field"><span class="label">가능 시기</span>
           <div class="choices" id="q3_terms">
             <label class="choice"><input type="checkbox" value="2026–27 동계방학 (12~2월)">2026–27 동계방학 (12~2월)</label>
             <label class="choice"><input type="checkbox" value="2027 하계방학 (6~8월)">2027 하계방학 (6~8월)</label>
             <label class="choice"><input type="checkbox" value="학기 중도 가능">학기 중도 가능</label>
           </div></div>
-        <div class="field"><span class="label">수용 대상</span>
+        <div class="field"><span class="label">초청 대상</span>
           <div class="choices" id="q3_targets">
             <label class="choice"><input type="checkbox" value="학부생">학부생</label>
             <label class="choice"><input type="checkbox" value="석사과정">석사과정</label>
@@ -398,7 +398,7 @@ footer a{color:inherit}
     </div>
     <div class="kpis">
       <div class="kpi"><b id="k_total">0</b><span>제출한 교수님</span></div>
-      <div class="kpi"><b id="k_host">0</b><span>수용 가능 (조건부 포함)</span></div>
+      <div class="kpi"><b id="k_host">0</b><span>초청 가능 (조건부 포함)</span></div>
       <div class="kpi"><b id="k_send">0</b><span>파견 가능 (조건부 포함)</span></div>
       <div class="kpi"><b id="k_file">0</b><span>연구 소개 자료 제출</span></div>
     </div>
@@ -539,7 +539,7 @@ function missing(d){
   if(!d.q1_main) m.push(['q1_main','1번 주요 연구 분야']);
   if(!d.q1_keywords) m.push(['q1_keywords','1번 관심 분야 키워드']);
   if(!d.q1_wish) m.push(['q1_wish','1번 협력 희망 분야']);
-  if(!d.q3_avail) m.push(['b_q3','3번 수용 여부']);
+  if(!d.q3_avail) m.push(['b_q3','3번 초청 의향']);
   if(!d.q4_avail) m.push(['b_q4','4번 파견 여부']);
   return m;
 }
@@ -658,11 +658,14 @@ function renderList(){
     return '<div class="card"><button type="button" data-i="'+i+'" aria-expanded="'+open+'">'+
       '<span class="who"><b>'+esc(r['성명'])+(PREVIEW?'<span class="preview-tag">예시</span>':'')+'</b><span class="small">'+esc([r['접수번호'],r['직위']].filter(Boolean).join(' · '))+'</span></span>'+
       '<span class="dept small">'+esc([r['단과대학'],r['학과']].filter(Boolean).join(' · '))+'</span>'+
-      '<span class="pills">'+pill('수용',r['3.수용 여부'])+pill('파견',r['4.파견 여부'])+'</span>'+
+      '<span class="pills">'+pill('초청',r['3.수용 여부'])+pill('파견',r['4.파견 여부'])+'</span>'+
       '<span class="date">'+esc(r['최종 수정']||'')+'</span>'+
     '</button>'+(open?'<div class="detail">'+detail(r)+'</div>':'')+'</div>';
   }).join('');
 }
+// 시트 열 이름 → 화면에 보이는 이름 (시트와의 호환을 위해 열 이름 자체는 바꾸지 않음)
+const LABELS = { '3.수용 여부':'3.초청 의향', '3.인원':'3.초청 인원', '3.대상':'3.초청 대상' };
+const lbl = k => LABELS[k] || k;
 function detail(r){
   const skip = new Set(['성명','직위','단과대학','학과','접수번호','파일ID','1.자료 파일 링크']);
   let h='<dl class="dl">';
@@ -673,8 +676,8 @@ function detail(r){
       const url=r['1.자료 파일 링크'];
       h+='<dt>연구 소개 자료</dt><dd>'+(url?'<a href="'+esc(url)+'" target="_blank" rel="noopener">'+esc(v)+' 열기</a>':esc(v))+'</dd>'; continue;
     }
-    if(k==='1.자료 링크'){ h+='<dt>'+esc(k)+'</dt><dd><a href="'+esc(v)+'" target="_blank" rel="noopener">'+esc(v)+'</a></dd>'; continue; }
-    h+='<dt>'+esc(k)+'</dt><dd>'+esc(v)+'</dd>';
+    if(k==='1.자료 링크'){ h+='<dt>'+esc(lbl(k))+'</dt><dd><a href="'+esc(v)+'" target="_blank" rel="noopener">'+esc(v)+'</a></dd>'; continue; }
+    h+='<dt>'+esc(lbl(k))+'</dt><dd>'+esc(v)+'</dd>';
   }
   return h+'</dl>';
 }
@@ -711,7 +714,7 @@ async function saveCfg(){
 function csv(){
   const heads = S.headers.length ? S.headers.filter(h=>h!=='파일ID') : [...new Set(S.rows.flatMap(r=>Object.keys(r)))];
   const cell = v => { v=v==null?'':String(v); return /[",\n\r]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; };
-  const text='﻿'+[heads.map(cell).join(',')].concat(S.rows.map(r=>heads.map(h=>cell(r[h])).join(','))).join('\r\n');
+  const text='﻿'+[heads.map(h=>cell(lbl(h))).join(',')].concat(S.rows.map(r=>heads.map(h=>cell(r[h])).join(','))).join('\r\n');
   const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));
   a.download='2026_독일BK_연구교류_사전설문_응답.csv'; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },500);
 }
