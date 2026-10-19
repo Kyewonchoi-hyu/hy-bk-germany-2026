@@ -110,7 +110,8 @@ textarea{resize:vertical;min-height:110px;line-height:1.65}
 input:focus,textarea:focus{outline:none;border-color:var(--hy-blue);box-shadow:0 0 0 3px var(--hy-blue-soft)}
 .field.invalid input,.field.invalid textarea{border-color:var(--bad)}
 .field.invalid .choice{border-color:var(--bad)}
-#partner_first{grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr))}
+#partner_first{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:560px){#partner_first{grid-template-columns:1fr}}
 .field.invalid .drop{border-color:var(--bad);background:var(--bad-soft)}
 .filechip.sent{background:var(--ok-soft)}
 .counter{font-size:12px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
@@ -309,13 +310,13 @@ footer a{color:inherit}
     <div class="block" id="b_partner">
       <div class="qhead"><span class="qnum">3</span><h2>상대 연구실</h2>
         <p class="hint">학생 교류를 가장 먼저 추진하고 싶은 기관과, 학생이 갈 만한 연구자·연구실을 알고 계신지 알려 주세요.</p></div>
-      <div class="field"><span class="label">1순위 기관<span class="req">*</span></span>
-        <div class="choices" id="partner_first" role="radiogroup" aria-label="1순위 기관">
-          <label class="choice"><input type="radio" name="partner_first" value="막스플랑크 연구소">막스플랑크 연구소</label>
-          <label class="choice"><input type="radio" name="partner_first" value="아헨공대">아헨공대</label>
-          <label class="choice"><input type="radio" name="partner_first" value="드레스덴 공대">드레스덴 공대</label>
-          <label class="choice"><input type="radio" name="partner_first" value="율리히 연구소">율리히 연구소</label>
-          <label class="choice"><input type="radio" name="partner_first" value="아직 정하지 않음">아직 정하지 않음</label>
+      <div class="field"><span class="label">1순위 기관<span class="req">*</span><span class="help">가급적 많이 선택하여 주시기 바랍니다.</span></span>
+        <div class="choices" id="partner_first" aria-label="1순위 기관">
+          <label class="choice"><input type="checkbox" value="막스플랑크 연구소">막스플랑크 연구소</label>
+          <label class="choice"><input type="checkbox" value="아헨공대">아헨공대</label>
+          <label class="choice"><input type="checkbox" value="드레스덴 공대">드레스덴 공대</label>
+          <label class="choice"><input type="checkbox" value="율리히 연구소">율리히 연구소</label>
+          <label class="choice"><input type="checkbox" value="아직 정하지 않음">아직 정하지 않음</label>
         </div></div>
       <div class="field"><span class="label">학생이 갈 만한 연구자·연구실<span class="req">*</span></span>
         <div class="avail" id="partner_known" role="radiogroup" aria-label="연구자·연구실 파악 여부">
@@ -512,7 +513,7 @@ function collect(){
     email:$('f_email').value.trim(), phone:$('f_phone').value.trim(),
     send_avail:radio('send_avail'), send_terms:checked('send_terms'), send_durations:checked('send_durations'), send_reason:$('send_reason').value.trim(),
     host_avail:radio('host_avail'), host_count:num('host_count'), host_durations:checked('host_durations'), host_cond:$('host_cond').value.trim(), host_reason:$('host_reason').value.trim(),
-    partner_first:radio('partner_first'), partner_known:radio('partner_known'), partner_detail:$('partner_detail').value.trim(),
+    partner_first:checked('partner_first'), partner_known:radio('partner_known'), partner_detail:$('partner_detail').value.trim(),
     q1_main:$('q1_main').value.trim(), q1_keywords:$('q1_keywords').value.trim(), q1_link:$('q1_link').value.trim(),
     q2_insts:checked('q2_insts'), q2_types:checked('q2_types'), q2_other:$('q2_other').value.trim(), q2_detail:$('q2_detail').value.trim()
   };
@@ -525,8 +526,8 @@ function fill(d){
   if(pos.startsWith('기타')){ $('f_position').value='기타'; $('f_position_other').value=pos.replace(/^기타:?\s*/,''); } else $('f_position').value=pos;
   if(d.college && (DEPTS[d.college]||d.college===OTHER)){ $('f_college').value=d.college; buildDepts(d.dept); if(d.college===OTHER) $('f_dept_other').value=d.dept||''; }
   ['send_reason','host_count','host_cond','host_reason','partner_detail','q1_main','q1_keywords','q1_link','q2_other','q2_detail'].forEach(k=>t(k,d[k]));
-  ['send_terms','send_durations','host_durations','q2_insts','q2_types'].forEach(k=>setChecked(k,d[k]));
-  ['send_avail','host_avail','partner_first','partner_known'].forEach(k=>setRadio(k,d[k]));
+  ['send_terms','send_durations','host_durations','partner_first','q2_insts','q2_types'].forEach(k=>setChecked(k,[].concat(d[k]||[])));
+  ['send_avail','host_avail','partner_known'].forEach(k=>setRadio(k,d[k]));
   sync(); counters();
 }
 function sync(){
@@ -562,7 +563,7 @@ function missing(d){
     if(!d.host_count) m.push(['host_count','2번 초청 가능 인원']);
     if(!d.host_durations.length) m.push(['host_durations','2번 초청 가능 기간']);
   } else if(!d.host_reason) m.push(['host_reason','2번 어려운 이유']);
-  if(!d.partner_first) m.push(['partner_first','3번 1순위 기관']);
+  if(!d.partner_first.length) m.push(['partner_first','3번 1순위 기관']);
   if(!d.partner_known) m.push(['partner_known','3번 연구자·연구실']);
   else if(d.partner_known!=='없음' && !d.partner_detail) m.push(['partner_detail','3번 연구자·연구실 정보']);
   if(!d.q1_main) m.push(['q1_main','4번 주요 연구 분야']);
