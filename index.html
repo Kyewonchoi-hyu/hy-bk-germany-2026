@@ -255,7 +255,7 @@ footer a{color:inherit}
     <!-- 1 -->
     <div class="block">
       <div class="qhead"><span class="qnum">1</span><h2>주요 연구 분야 및 관심 분야, 향후 협력 희망 분야</h2>
-        <p class="hint">주요 연구 분야, 관심 분야 키워드, 향후 협력 희망 분야를 기입해 주시고, 독일 방문 연구소에 전달될 예정인 교수님의 연구 소개 발표자료를 업로드해 주세요.</p>
+        <p class="hint">주요 연구 분야, 관심 분야 키워드, 향후 협력 희망 분야를 기입해 주시고, 독일 방문 연구소에 전달될 예정인 교수님의 연구 소개 발표자료를 업로드해 주세요(선택).</p>
         <p class="hint note"><b>* 발표자료</b> PPT <span class="nw">1장</span> (주요 연구분야, 국제협력 및 공동연구 가능 분야 중심)</p></div>
       <div class="field"><label class="label" for="q1_main">주요 연구 분야<span class="req">*</span></label>
         <textarea id="q1_main" maxlength="1500" placeholder="핵심 연구 주제와 대표 성과를 간단히 적어 주세요."></textarea>
@@ -266,7 +266,7 @@ footer a{color:inherit}
         <textarea id="q1_wish" maxlength="1500" placeholder="방문 기관과 함께 연구하고 싶은 주제나 방향을 적어 주세요."></textarea>
         <div class="counter" data-for="q1_wish"></div></div>
       <div class="field">
-        <span class="label">연구 소개 발표자료<span class="req">*</span><span class="help">독일 방문 연구소 전달용 · PPT 1장 · PPTX 또는 PDF, 10MB 이하</span></span>
+        <span class="label">연구 소개 발표자료<span class="opt">선택</span><span class="help">독일 방문 연구소 전달용 · PPT 1장 · PPTX 또는 PDF, 10MB 이하</span></span>
         <div class="drop" id="drop">
           <div class="row"><button type="button" class="btn" id="pickBtn">파일 선택</button><span class="small drag-hint">또는 이 상자에 파일을 끌어다 놓으세요</span></div>
           <input type="file" id="f_file" accept=".pptx,.pdf" hidden>
@@ -539,7 +539,6 @@ function missing(d){
   if(!d.q1_main) m.push(['q1_main','1번 주요 연구 분야']);
   if(!d.q1_keywords) m.push(['q1_keywords','1번 관심 분야 키워드']);
   if(!d.q1_wish) m.push(['q1_wish','1번 협력 희망 분야']);
-  if(!S.file && !d.q1_link && !sentFile(d.email)) m.push(['drop','1번 연구 소개 발표자료']);
   if(!d.q3_avail) m.push(['b_q3','3번 수용 여부']);
   if(!d.q4_avail) m.push(['b_q4','4번 파견 여부']);
   return m;
