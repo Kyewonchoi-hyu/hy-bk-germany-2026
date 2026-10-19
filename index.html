@@ -109,6 +109,8 @@ select:focus{outline:none;border-color:var(--hy-blue);box-shadow:0 0 0 3px var(-
 textarea{resize:vertical;min-height:110px;line-height:1.65}
 input:focus,textarea:focus{outline:none;border-color:var(--hy-blue);box-shadow:0 0 0 3px var(--hy-blue-soft)}
 .field.invalid input,.field.invalid textarea{border-color:var(--bad)}
+.field.invalid .choice{border-color:var(--bad)}
+#partner_first{grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr))}
 .field.invalid .drop{border-color:var(--bad);background:var(--bad-soft)}
 .filechip.sent{background:var(--ok-soft)}
 .counter{font-size:12px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
@@ -252,19 +254,89 @@ footer a{color:inherit}
       </div>
     </div>
 
-    <!-- 1 -->
+    <!-- 1 학생 파견 -->
+    <div class="block" id="b_send">
+      <div class="qhead"><span class="qnum">1</span><h2>학생 파견</h2>
+        <p class="hint">교수님 연구실 학생을 방문 기관에 파견하실 수 있는지 알려 주세요. 가능하시면 희망 시기와 기간을, 어려우시면 이유를 적어 주세요.</p></div>
+      <div class="avail" role="radiogroup" aria-label="학생 파견 가능 여부">
+        <label class="choice"><input type="radio" name="send_avail" value="가능">가능</label>
+        <label class="choice"><input type="radio" name="send_avail" value="조건부 가능">조건부 가능</label>
+        <label class="choice"><input type="radio" name="send_avail" value="어려움">어려움</label>
+      </div>
+      <div class="sub" id="send_sub" hidden>
+        <div class="field"><span class="label">파견 희망 시기<span class="req">*</span><span class="help">여러 개 고르셔도 됩니다</span></span>
+          <div class="choices" id="send_terms">
+            <label class="choice"><input type="checkbox" value="2026 겨울방학">2026 겨울방학</label>
+            <label class="choice"><input type="checkbox" value="2027-1학기">2027-1학기</label>
+            <label class="choice"><input type="checkbox" value="2027-2학기">2027-2학기</label>
+          </div></div>
+        <div class="field"><span class="label">파견 기간<span class="req">*</span><span class="help">여러 개 고르셔도 됩니다</span></span>
+          <div class="choices" id="send_durations">
+            <label class="choice"><input type="checkbox" value="3~4주">3~4주</label>
+            <label class="choice"><input type="checkbox" value="1~3개월">1~3개월</label>
+            <label class="choice"><input type="checkbox" value="한 학기">한 학기</label>
+          </div></div>
+      </div>
+      <div class="field" id="w_send_reason" hidden><label class="label" for="send_reason" id="send_reason_label">어려운 이유<span class="req">*</span></label>
+        <textarea id="send_reason" maxlength="800" style="min-height:80px" placeholder="예) 현재 파견 가능한 학생이 없음, 연구과제 일정상 2027년 하반기 이후 가능 등"></textarea></div>
+    </div>
+
+    <!-- 2 학생 수용 -->
+    <div class="block" id="b_host">
+      <div class="qhead"><span class="qnum">2</span><h2>학생 수용</h2>
+        <p class="hint">방문 기관 학생을 교수님 연구실에서 받으실 수 있는지 알려 주세요. 가능하시면 받을 수 있는 인원·기간·조건을, 어려우시면 이유를 적어 주세요.</p></div>
+      <div class="avail" role="radiogroup" aria-label="학생 수용 가능 여부">
+        <label class="choice"><input type="radio" name="host_avail" value="가능">가능</label>
+        <label class="choice"><input type="radio" name="host_avail" value="조건부 가능">조건부 가능</label>
+        <label class="choice"><input type="radio" name="host_avail" value="어려움">어려움</label>
+      </div>
+      <div class="sub" id="host_sub" hidden>
+        <div class="grid2"><div class="field"><label class="label" for="host_count">받을 수 있는 인원 (명)<span class="req">*</span></label><input type="number" id="host_count" min="1" max="50" inputmode="numeric"></div></div>
+        <div class="field"><span class="label">받을 수 있는 기간<span class="req">*</span><span class="help">여러 개 고르셔도 됩니다</span></span>
+          <div class="choices" id="host_durations">
+            <label class="choice"><input type="checkbox" value="3~4주">3~4주</label>
+            <label class="choice"><input type="checkbox" value="1~3개월">1~3개월</label>
+            <label class="choice"><input type="checkbox" value="한 학기">한 학기</label>
+          </div></div>
+        <div class="field"><label class="label" for="host_cond">조건<span class="opt">선택</span></label>
+          <textarea id="host_cond" maxlength="800" style="min-height:80px" placeholder="예) 체재비는 상대 기관 부담, 연구 분야가 맞는 대학원생 우선 등"></textarea></div>
+      </div>
+      <div class="field" id="w_host_reason" hidden><label class="label" for="host_reason">어려운 이유<span class="req">*</span></label>
+        <textarea id="host_reason" maxlength="800" style="min-height:80px" placeholder="예) 연구실 공간·장비 여유 부족, 지도 가능한 인력 부족 등"></textarea></div>
+    </div>
+
+    <!-- 3 상대 연구실 -->
+    <div class="block" id="b_partner">
+      <div class="qhead"><span class="qnum">3</span><h2>상대 연구실</h2>
+        <p class="hint">학생 교류를 가장 먼저 추진하고 싶은 기관과, 학생이 갈 만한 연구자·연구실을 알고 계신지 알려 주세요.</p></div>
+      <div class="field"><span class="label">1순위 기관<span class="req">*</span></span>
+        <div class="choices" id="partner_first" role="radiogroup" aria-label="1순위 기관">
+          <label class="choice"><input type="radio" name="partner_first" value="막스플랑크 연구소">막스플랑크 연구소</label>
+          <label class="choice"><input type="radio" name="partner_first" value="아헨공대">아헨공대</label>
+          <label class="choice"><input type="radio" name="partner_first" value="드레스덴 공대">드레스덴 공대</label>
+          <label class="choice"><input type="radio" name="partner_first" value="율리히 연구소">율리히 연구소</label>
+          <label class="choice"><input type="radio" name="partner_first" value="아직 정하지 않음">아직 정하지 않음</label>
+        </div></div>
+      <div class="field"><span class="label">학생이 갈 만한 연구자·연구실<span class="req">*</span></span>
+        <div class="avail" id="partner_known" role="radiogroup" aria-label="연구자·연구실 파악 여부">
+          <label class="choice"><input type="radio" name="partner_known" value="알고 있음">알고 있음</label>
+          <label class="choice"><input type="radio" name="partner_known" value="연락한 적 있음">연락한 적 있음</label>
+          <label class="choice"><input type="radio" name="partner_known" value="없음">없음</label>
+        </div></div>
+      <div class="field" id="w_partner_detail" hidden><label class="label" for="partner_detail">연구자·연구실 정보<span class="req">*</span><span class="help">기관, 연구자 이름, 연구실(그룹)명을 알려 주세요</span></label>
+        <textarea id="partner_detail" maxlength="800" style="min-height:80px" placeholder="예) 아헨공대 ○○○ 교수, ○○ Lab"></textarea></div>
+    </div>
+
+    <!-- 4 주요 연구 분야·키워드 -->
     <div class="block">
-      <div class="qhead"><span class="qnum">1</span><h2>주요 연구 분야 및 관심 분야, 향후 협력 희망 분야</h2>
-        <p class="hint">주요 연구 분야, 관심 분야 키워드, 향후 협력 희망 분야를 기입해 주시고, 독일 방문 연구소에 전달될 예정인 교수님의 연구 소개 발표자료를 업로드해 주세요(선택).</p>
+      <div class="qhead"><span class="qnum">4</span><h2>주요 연구 분야·키워드</h2>
+        <p class="hint">학생이 파견될 연구실을 찾기 위해 사용될 예정입니다. 독일 방문 연구소에 전달될 연구 소개 발표자료가 있으면 함께 올려 주세요(선택).</p>
         <p class="hint note"><b>* 발표자료</b> PPT <span class="nw">1장</span> (주요 연구분야, 국제협력 및 공동연구 가능 분야 중심)</p></div>
       <div class="field"><label class="label" for="q1_main">주요 연구 분야<span class="req">*</span></label>
         <textarea id="q1_main" maxlength="1500" placeholder="핵심 연구 주제와 대표 성과를 간단히 적어 주세요."></textarea>
         <div class="counter" data-for="q1_main"></div></div>
-      <div class="field"><label class="label" for="q1_keywords">관심 분야 키워드<span class="req">*</span><span class="help">쉼표로 구분해 주세요</span></label>
+      <div class="field"><label class="label" for="q1_keywords">연구 키워드<span class="req">*</span><span class="help">쉼표로 구분해 주세요</span></label>
         <input type="text" id="q1_keywords" placeholder="예) 이차전지, 고체전해질"></div>
-      <div class="field"><label class="label" for="q1_wish">향후 협력 희망 분야<span class="req">*</span></label>
-        <textarea id="q1_wish" maxlength="1500" placeholder="방문 기관과 함께 연구하고 싶은 주제나 방향을 적어 주세요."></textarea>
-        <div class="counter" data-for="q1_wish"></div></div>
       <div class="field">
         <span class="label">연구 소개 발표자료<span class="opt">선택</span><span class="help">독일 방문 연구소 전달용 · PPT 1장 · PPTX 또는 PDF, 10MB 이하</span></span>
         <div class="drop" id="drop">
@@ -279,10 +351,11 @@ footer a{color:inherit}
         <input type="url" id="q1_link" inputmode="url" placeholder="https://"></div>
     </div>
 
-    <!-- 2 -->
+
+    <!-- 5 향후 교수 교환·공동연구 -->
     <div class="block">
-      <div class="qhead"><span class="qnum">2</span><h2>방문 기관과 추진 가능한 연구협력 방안</h2>
-        <p class="hint">해당하는 항목을 모두 고르고 구체적인 내용을 적어 주세요.</p></div>
+      <div class="qhead"><span class="qnum">5</span><h2>향후 교수 교환·공동연구</h2>
+        <p class="hint">방문 기관과 추진 가능한 교수 교환·공동연구 방안을 모두 고르고, 구체적인 내용을 적어 주세요.</p></div>
       <div class="field"><span class="label">협력 희망 기관<span class="help">가급적 많이 선택하여 주시기 바랍니다.</span></span>
         <div class="choices" id="q2_insts">
           <label class="choice"><input type="checkbox" value="막스플랑크 연구소">막스플랑크 연구소</label>
@@ -306,71 +379,6 @@ footer a{color:inherit}
       <div class="field"><label class="label" for="q2_detail">구체적인 협력 방안</label>
         <textarea id="q2_detail" maxlength="1500" placeholder="예) 상대 기관 ○○ 교수 연구실과 공동연구 추진, 2027년 상반기 공동 워크숍 희망"></textarea>
         <div class="counter" data-for="q2_detail"></div></div>
-    </div>
-
-    <!-- 3 -->
-    <div class="block" id="b_q3">
-      <div class="qhead"><span class="qnum">3</span><h2>향후 방문 기관의 학생·연구자를 교수님 연구실에 단기초청 등을 하실 의향이 있으십니까?</h2>
-        <p class="hint">실질적인 연구교류를 위한 단기 초청(인턴·방문연구) 여부입니다.</p></div>
-      <div class="avail" role="radiogroup" aria-label="초청 의향">
-        <label class="choice"><input type="radio" name="q3_avail" value="가능">가능</label>
-        <label class="choice"><input type="radio" name="q3_avail" value="조건부 가능">조건부 가능</label>
-        <label class="choice"><input type="radio" name="q3_avail" value="어려움">어려움</label>
-      </div>
-      <div class="sub" id="q3_sub" hidden>
-        <div class="grid2"><div class="field"><label class="label" for="q3_count">초청 가능 인원 (명)</label><input type="number" id="q3_count" min="1" max="50" inputmode="numeric"></div></div>
-        <div class="field"><span class="label">가능 시기</span>
-          <div class="choices" id="q3_terms">
-            <label class="choice"><input type="checkbox" value="2026–27 동계방학 (12~2월)">2026–27 동계방학 (12~2월)</label>
-            <label class="choice"><input type="checkbox" value="2027 하계방학 (6~8월)">2027 하계방학 (6~8월)</label>
-            <label class="choice"><input type="checkbox" value="학기 중도 가능">학기 중도 가능</label>
-          </div></div>
-        <div class="field"><span class="label">초청 대상</span>
-          <div class="choices" id="q3_targets">
-            <label class="choice"><input type="checkbox" value="학부생">학부생</label>
-            <label class="choice"><input type="checkbox" value="석사과정">석사과정</label>
-            <label class="choice"><input type="checkbox" value="박사과정">박사과정</label>
-            <label class="choice"><input type="checkbox" value="박사후연구원">박사후연구원</label>
-            <label class="choice"><input type="checkbox" value="교원·연구원">교원·연구원</label>
-          </div></div>
-      </div>
-      <div class="field"><label class="label" for="q3_note">조건 또는 비고</label>
-        <textarea id="q3_note" maxlength="800" style="min-height:80px" placeholder="예) 체재비 지원 시 가능, 연구 분야가 맞는 대학원생 우선 등"></textarea></div>
-    </div>
-
-    <!-- 4 -->
-    <div class="block" id="b_q4">
-      <div class="qhead"><span class="qnum">4</span><h2>향후 교수님 연구실 또는 관련 사업단 소속 학생·연구자를 방문 기관에 파견하실 수 있습니까?</h2>
-        <p class="hint">상대 기관 연구실로의 단기 파견(방문연구·인턴십) 가능 여부입니다.</p></div>
-      <div class="avail" role="radiogroup" aria-label="파견 가능 여부">
-        <label class="choice"><input type="radio" name="q4_avail" value="가능">가능</label>
-        <label class="choice"><input type="radio" name="q4_avail" value="조건부 가능">조건부 가능</label>
-        <label class="choice"><input type="radio" name="q4_avail" value="어려움">어려움</label>
-      </div>
-      <div class="sub" id="q4_sub" hidden>
-        <div class="field"><span class="label">파견 주체</span>
-          <div class="choices" id="q4_units">
-            <label class="choice"><input type="checkbox" value="교수 연구실">교수 연구실</label>
-            <label class="choice"><input type="checkbox" value="관련 사업단·센터">관련 사업단·센터</label>
-          </div></div>
-        <div class="grid2"><div class="field"><label class="label" for="q4_count">파견 가능 인원 (명)</label><input type="number" id="q4_count" min="1" max="50" inputmode="numeric"></div></div>
-        <div class="field"><span class="label">가능 시기</span>
-          <div class="choices" id="q4_terms">
-            <label class="choice"><input type="checkbox" value="2026–27 동계방학 (12~2월)">2026–27 동계방학 (12~2월)</label>
-            <label class="choice"><input type="checkbox" value="2027 하계방학 (6~8월)">2027 하계방학 (6~8월)</label>
-            <label class="choice"><input type="checkbox" value="학기 중도 가능">학기 중도 가능</label>
-          </div></div>
-        <div class="field"><span class="label">파견 대상</span>
-          <div class="choices" id="q4_targets">
-            <label class="choice"><input type="checkbox" value="학부생">학부생</label>
-            <label class="choice"><input type="checkbox" value="석사과정">석사과정</label>
-            <label class="choice"><input type="checkbox" value="박사과정">박사과정</label>
-            <label class="choice"><input type="checkbox" value="박사후연구원">박사후연구원</label>
-            <label class="choice"><input type="checkbox" value="교원·연구원">교원·연구원</label>
-          </div></div>
-      </div>
-      <div class="field"><label class="label" for="q4_note">조건 또는 비고</label>
-        <textarea id="q4_note" maxlength="800" style="min-height:80px" placeholder="예) 사업단 해외연수 예산으로 항공·체재비 지원 가능 등"></textarea></div>
     </div>
 
     <div class="actions">
@@ -398,9 +406,9 @@ footer a{color:inherit}
     </div>
     <div class="kpis">
       <div class="kpi"><b id="k_total">0</b><span>제출한 교수님</span></div>
-      <div class="kpi"><b id="k_host">0</b><span>초청 가능 (조건부 포함)</span></div>
-      <div class="kpi"><b id="k_send">0</b><span>파견 가능 (조건부 포함)</span></div>
-      <div class="kpi"><b id="k_file">0</b><span>연구 소개 자료 제출</span></div>
+      <div class="kpi"><b id="k_send">0</b><span>학생 파견 가능 (조건부 포함)</span></div>
+      <div class="kpi"><b id="k_host">0</b><span>학생 수용 가능 (조건부 포함)</span></div>
+      <div class="kpi"><b id="k_file">0</b><span>상대 연구자·연구실 파악</span></div>
     </div>
 
     <div class="block">
@@ -446,7 +454,7 @@ const DEPTS = {"공과대학": ["건축학부", "건축공학부", "건설환경
 const OTHER = '기타 (직접 입력)';
 const DEFAULT_INST = '막스플랑크 연구소, 아헨공대, 드레스덴 공대, 율리히 연구소';
 const SENT_KEY = 'hy_bk_de_sent_v2';   // 같은 탭(세션)에서만 기억
-const DRAFT_KEY = 'hy_bk_de_draft_v2', PW_KEY = 'hy_bk_de_admin';
+const DRAFT_KEY = 'hy_bk_de_draft_v3', PW_KEY = 'hy_bk_de_admin';
 const S = { file:null, busy:false, rows:[], headers:[], open:null, pw:'' };
 
 /* ---------- 공통 ---------- */
@@ -502,10 +510,11 @@ function collect(){
     college:$('f_college').value,
     dept: $('f_college').value===OTHER ? $('f_dept_other').value.trim() : $('f_dept').value,
     email:$('f_email').value.trim(), phone:$('f_phone').value.trim(),
-    q1_main:$('q1_main').value.trim(), q1_keywords:$('q1_keywords').value.trim(), q1_wish:$('q1_wish').value.trim(), q1_link:$('q1_link').value.trim(),
-    q2_insts:checked('q2_insts'), q2_types:checked('q2_types'), q2_other:$('q2_other').value.trim(), q2_detail:$('q2_detail').value.trim(),
-    q3_avail:radio('q3_avail'), q3_count:num('q3_count'), q3_terms:checked('q3_terms'), q3_targets:checked('q3_targets'), q3_note:$('q3_note').value.trim(),
-    q4_avail:radio('q4_avail'), q4_units:checked('q4_units'), q4_count:num('q4_count'), q4_terms:checked('q4_terms'), q4_targets:checked('q4_targets'), q4_note:$('q4_note').value.trim()
+    send_avail:radio('send_avail'), send_terms:checked('send_terms'), send_durations:checked('send_durations'), send_reason:$('send_reason').value.trim(),
+    host_avail:radio('host_avail'), host_count:num('host_count'), host_durations:checked('host_durations'), host_cond:$('host_cond').value.trim(), host_reason:$('host_reason').value.trim(),
+    partner_first:radio('partner_first'), partner_known:radio('partner_known'), partner_detail:$('partner_detail').value.trim(),
+    q1_main:$('q1_main').value.trim(), q1_keywords:$('q1_keywords').value.trim(), q1_link:$('q1_link').value.trim(),
+    q2_insts:checked('q2_insts'), q2_types:checked('q2_types'), q2_other:$('q2_other').value.trim(), q2_detail:$('q2_detail').value.trim()
   };
 }
 function fill(d){
@@ -515,9 +524,9 @@ function fill(d){
   const pos=d.position||'';
   if(pos.startsWith('기타')){ $('f_position').value='기타'; $('f_position_other').value=pos.replace(/^기타:?\s*/,''); } else $('f_position').value=pos;
   if(d.college && (DEPTS[d.college]||d.college===OTHER)){ $('f_college').value=d.college; buildDepts(d.dept); if(d.college===OTHER) $('f_dept_other').value=d.dept||''; }
-  ['q1_main','q1_keywords','q1_wish','q1_link','q2_other','q2_detail','q3_count','q3_note','q4_count','q4_note'].forEach(k=>t(k,d[k]));
-  ['q2_insts','q2_types','q3_terms','q3_targets','q4_units','q4_terms','q4_targets'].forEach(k=>setChecked(k,d[k]));
-  setRadio('q3_avail',d.q3_avail); setRadio('q4_avail',d.q4_avail);
+  ['send_reason','host_count','host_cond','host_reason','partner_detail','q1_main','q1_keywords','q1_link','q2_other','q2_detail'].forEach(k=>t(k,d[k]));
+  ['send_terms','send_durations','host_durations','q2_insts','q2_types'].forEach(k=>setChecked(k,d[k]));
+  ['send_avail','host_avail','partner_first','partner_known'].forEach(k=>setRadio(k,d[k]));
   sync(); counters();
 }
 function sync(){
@@ -525,8 +534,14 @@ function sync(){
   $('w_posother').hidden = $('f_position').value!=='기타';
   $('w_deptother').hidden = $('f_college').value!==OTHER;
   const ok = v => v==='가능'||v==='조건부 가능';
-  $('q3_sub').hidden = !ok(radio('q3_avail'));
-  $('q4_sub').hidden = !ok(radio('q4_avail'));
+  const sa=radio('send_avail');
+  $('send_sub').hidden = !ok(sa);
+  $('w_send_reason').hidden = !(sa==='어려움'||sa==='조건부 가능');
+  $('send_reason_label').innerHTML = sa==='어려움' ? '어려운 이유<span class="req">*</span>' : '조건 또는 비고<span class="opt">선택</span>';
+  $('host_sub').hidden = !ok(radio('host_avail'));
+  $('w_host_reason').hidden = radio('host_avail')!=='어려움';
+  const pk=radio('partner_known');
+  $('w_partner_detail').hidden = !(pk==='알고 있음'||pk==='연락한 적 있음');
 }
 function counters(){ document.querySelectorAll('.counter').forEach(c=>{ const t=$(c.dataset.for); c.textContent=t.value.length+' / '+t.maxLength+'자'; }); }
 function missing(d){
@@ -536,11 +551,22 @@ function missing(d){
   if(!d.college) m.push(['f_college','단과대학']);
   else if(!d.dept) m.push([d.college===OTHER?'f_dept_other':'f_dept','학과']);
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) m.push(['f_email','이메일']);
-  if(!d.q1_main) m.push(['q1_main','1번 주요 연구 분야']);
-  if(!d.q1_keywords) m.push(['q1_keywords','1번 관심 분야 키워드']);
-  if(!d.q1_wish) m.push(['q1_wish','1번 협력 희망 분야']);
-  if(!d.q3_avail) m.push(['b_q3','3번 초청 의향']);
-  if(!d.q4_avail) m.push(['b_q4','4번 파견 여부']);
+  const ok = v => v==='가능'||v==='조건부 가능';
+  if(!d.send_avail) m.push(['b_send','1번 파견 가능 여부']);
+  else if(ok(d.send_avail)){
+    if(!d.send_terms.length) m.push(['send_terms','1번 파견 희망 시기']);
+    if(!d.send_durations.length) m.push(['send_durations','1번 파견 기간']);
+  } else if(!d.send_reason) m.push(['send_reason','1번 어려운 이유']);
+  if(!d.host_avail) m.push(['b_host','2번 수용 가능 여부']);
+  else if(ok(d.host_avail)){
+    if(!d.host_count) m.push(['host_count','2번 받을 수 있는 인원']);
+    if(!d.host_durations.length) m.push(['host_durations','2번 받을 수 있는 기간']);
+  } else if(!d.host_reason) m.push(['host_reason','2번 어려운 이유']);
+  if(!d.partner_first) m.push(['partner_first','3번 1순위 기관']);
+  if(!d.partner_known) m.push(['partner_known','3번 연구자·연구실']);
+  else if(d.partner_known!=='없음' && !d.partner_detail) m.push(['partner_detail','3번 연구자·연구실 정보']);
+  if(!d.q1_main) m.push(['q1_main','4번 주요 연구 분야']);
+  if(!d.q1_keywords) m.push(['q1_keywords','4번 연구 키워드']);
   return m;
 }
 function resetForm(){
@@ -637,20 +663,23 @@ async function onSubmit(ev){
 /* ---------- 관리자 ---------- */
 const SAMPLE = [
   { '접수번호':'BK2026-002','안내메일':'발송 2026-10-20 10:12','성명':'홍길동 (예시)','직위':'부교수','단과대학':'공과대학','학과':'기계공학부','이메일':'example1@hanyang.ac.kr',
-    '1.주요 연구 분야':'협동 로봇의 힘 제어, 촉각 센싱','1.관심 키워드':'로봇 매니퓰레이션, 촉각','1.협력 희망 분야':'의료용 로봇 공동연구',
-    '1.자료 파일명':'홍길동_연구소개.pptx','1.자료 파일 링크':'','2.협력 희망 기관':'아헨공대; 율리히 연구소','2.협력 방안':'공동연구 프로젝트; 학생·연구자 교환','2.구체적 방안':'2027년 하계 공동 워크숍',
-    '3.수용 여부':'가능','3.인원':2,'3.시기':'2027 하계방학 (6~8월)','3.대상':'석사과정; 박사과정','4.파견 여부':'조건부 가능','4.파견 주체':'교수 연구실','4.인원':1,'4.시기':'2026–27 동계방학 (12~2월)','4.조건·비고':'체재비 지원 시','최종 수정':'2026-10-20 10:12' },
-  { '접수번호':'BK2026-001','안내메일':'발송 2026-10-20 09:40','성명':'김한양 (예시)','직위':'교수','단과대학':'자연과학대학','학과':'화학과','이메일':'example2@hanyang.ac.kr','1.주요 연구 분야':'고체전해질 합성','1.협력 희망 분야':'계면 분석',
-    '2.협력 희망 기관':'막스플랑크 연구소','2.협력 방안':'공동 논문·학술발표','3.수용 여부':'어려움','4.파견 여부':'가능','4.인원':2,'최종 수정':'2026-10-20 09:40' }
+    '1.파견 여부':'가능','1.파견 희망 시기':'2026 겨울방학; 2027-1학기','1.파견 기간':'1~3개월',
+    '2.수용 여부':'조건부 가능','2.수용 인원':'2','2.수용 기간':'3~4주','2.수용 조건':'체재비 상대 기관 부담 시',
+    '3.1순위 기관':'아헨공대','3.연구자·연구실 파악':'연락한 적 있음','3.연구자·연구실 정보':'아헨공대 ○○○ 교수, ○○ Lab',
+    '4.주요 연구 분야':'협동 로봇의 힘 제어, 촉각 센싱','4.연구 키워드':'로봇 매니퓰레이션, 촉각','4.자료 파일명':'홍길동_연구소개.pptx',
+    '5.협력 희망 기관':'아헨공대; 율리히 연구소','5.협력 방안':'공동연구 프로젝트; 학생·연구자 교환','최종 수정':'2026-10-20 10:12' },
+  { '접수번호':'BK2026-001','안내메일':'발송 2026-10-20 09:40','성명':'김한양 (예시)','직위':'교수','단과대학':'자연과학대학','학과':'화학과','이메일':'example2@hanyang.ac.kr',
+    '1.파견 여부':'어려움','1.어려운 이유·조건':'현재 파견 가능한 학생 없음','2.수용 여부':'가능','2.수용 인원':'1','2.수용 기간':'한 학기',
+    '3.1순위 기관':'막스플랑크 연구소','3.연구자·연구실 파악':'없음','4.주요 연구 분야':'고체전해질 합성','4.연구 키워드':'이차전지, 고체전해질','최종 수정':'2026-10-20 09:40' }
 ];
 const isYes = v => v==='가능'||v==='조건부 가능';
 function pill(label, v){ const c = v==='가능'?'yes':v==='조건부 가능'?'cond':v==='어려움'?'no':'none'; return '<span class="pill '+c+'">'+esc(label)+' '+esc(v||'미응답')+'</span>'; }
 function renderList(){
   const L=S.rows;
   $('k_total').textContent=L.length;
-  $('k_host').textContent=L.filter(r=>isYes(r['3.수용 여부'])).length;
-  $('k_send').textContent=L.filter(r=>isYes(r['4.파견 여부'])).length;
-  $('k_file').textContent=L.filter(r=>r['1.자료 파일명']||r['1.자료 링크']).length;
+  $('k_send').textContent=L.filter(r=>isYes(r['1.파견 여부'])).length;
+  $('k_host').textContent=L.filter(r=>isYes(r['2.수용 여부'])).length;
+  $('k_file').textContent=L.filter(r=>r['3.연구자·연구실 파악']==='알고 있음'||r['3.연구자·연구실 파악']==='연락한 적 있음').length;
   const box=$('list');
   if(!L.length){ box.innerHTML='<div class="empty">아직 제출된 응답이 없습니다.</div>'; return; }
   box.innerHTML = L.map((r,i)=>{
@@ -658,25 +687,25 @@ function renderList(){
     return '<div class="card"><button type="button" data-i="'+i+'" aria-expanded="'+open+'">'+
       '<span class="who"><b>'+esc(r['성명'])+(PREVIEW?'<span class="preview-tag">예시</span>':'')+'</b><span class="small">'+esc([r['접수번호'],r['직위']].filter(Boolean).join(' · '))+'</span></span>'+
       '<span class="dept small">'+esc([r['단과대학'],r['학과']].filter(Boolean).join(' · '))+'</span>'+
-      '<span class="pills">'+pill('초청',r['3.수용 여부'])+pill('파견',r['4.파견 여부'])+'</span>'+
+      '<span class="pills">'+pill('파견',r['1.파견 여부'])+pill('수용',r['2.수용 여부'])+'</span>'+
       '<span class="date">'+esc(r['최종 수정']||'')+'</span>'+
     '</button>'+(open?'<div class="detail">'+detail(r)+'</div>':'')+'</div>';
   }).join('');
 }
 // 시트 열 이름 → 화면에 보이는 이름 (시트와의 호환을 위해 열 이름 자체는 바꾸지 않음)
-const LABELS = { '3.수용 여부':'3.초청 의향', '3.인원':'3.초청 인원', '3.대상':'3.초청 대상' };
+const LABELS = {};
 const lbl = k => LABELS[k] || k;
 function detail(r){
-  const skip = new Set(['성명','직위','단과대학','학과','접수번호','파일ID','1.자료 파일 링크']);
+  const skip = new Set(['성명','직위','단과대학','학과','접수번호','파일ID','4.자료 파일 링크']);
   let h='<dl class="dl">';
   for(const k of (S.headers.length?S.headers:Object.keys(r))){
     if(skip.has(k)) continue;
     const v=r[k]; if(v===''||v==null) continue;
-    if(k==='1.자료 파일명'){
-      const url=r['1.자료 파일 링크'];
+    if(k==='4.자료 파일명'){
+      const url=r['4.자료 파일 링크'];
       h+='<dt>연구 소개 자료</dt><dd>'+(url?'<a href="'+esc(url)+'" target="_blank" rel="noopener">'+esc(v)+' 열기</a>':esc(v))+'</dd>'; continue;
     }
-    if(k==='1.자료 링크'){ h+='<dt>'+esc(lbl(k))+'</dt><dd><a href="'+esc(v)+'" target="_blank" rel="noopener">'+esc(v)+'</a></dd>'; continue; }
+    if(k==='4.자료 링크'){ h+='<dt>'+esc(lbl(k))+'</dt><dd><a href="'+esc(v)+'" target="_blank" rel="noopener">'+esc(v)+'</a></dd>'; continue; }
     h+='<dt>'+esc(lbl(k))+'</dt><dd>'+esc(v)+'</dd>';
   }
   return h+'</dl>';
@@ -738,7 +767,7 @@ function route(){
 const form=$('survey');
 form.addEventListener('submit', onSubmit);
 form.addEventListener('input', e=>{ if(e.target.id==='f_email') renderFile(); sync(); counters(); const f=e.target.closest('.field.invalid'); if(f) f.classList.remove('invalid'); refreshNote(); saveDraft(); });
-form.addEventListener('change', e=>{ if(e.target.id==='f_college') buildDepts(); sync(); ['b_q3','b_q4'].forEach(id=>{ if(radio(id==='b_q3'?'q3_avail':'q4_avail')) $(id).classList.remove('invalid'); }); refreshNote(); saveDraft(); });
+form.addEventListener('change', e=>{ if(e.target.id==='f_college') buildDepts(); sync(); const iv=e.target.closest('.field.invalid, .block.invalid'); if(iv) iv.classList.remove('invalid'); refreshNote(); saveDraft(); });
 $('pickBtn').onclick=()=>$('f_file').click();
 $('resetBtn').onclick=resetForm;
 $('f_file').onchange=e=>takeFile(e.target.files[0]);
@@ -754,7 +783,7 @@ $('list').addEventListener('click', e=>{ const b=e.target.closest('button[data-i
 window.addEventListener('hashchange', route);
 
 buildColleges(); applyConfig({});
-store.del('hy_bk_de_sent_v1'); store.del('hy_bk_de_draft_v1');   // 예전 버전이 남긴 테스트 기록 정리
+store.del('hy_bk_de_sent_v1'); store.del('hy_bk_de_draft_v1'); store.del('hy_bk_de_draft_v2');   // 예전 버전이 남긴 테스트 기록 정리
 try{ const d=JSON.parse(store.get(DRAFT_KEY)||'null'); if(d) fill(d); }catch(e){}
 renderFile();
 sync(); counters(); refreshNote(); route();
