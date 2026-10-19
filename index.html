@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>2026년 독일 BK 연구교류 출장 사전 설문 | 한양대학교 대학원전략처</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* ============================================================
+   1) 연결 설정은 맨 아래 <script> 의 SCRIPT_URL 한 줄만 바꾸면 됩니다.
+   2) 색상: 한양대 UI 가이드(디자인경영센터) 공식값으로 교체하려면
+      아래 --hy-* 값만 바꾸세요.
+   ============================================================ */
+:root{
+  --hy-blue:#0E4A84;        /* 한양블루 (근사값) */
+  --hy-blue-deep:#0A3563;   /* 진한 블루: 푸터·hover */
+  --hy-blue-soft:#E9F0F8;   /* 옅은 블루: 선택 상태 배경 */
+  --hy-blue-line:#B9CDE5;
+  --bg:#F3F5F8; --surface:#FFFFFF; --ink:#18212F; --muted:#5B6678; --line:#DCE2EA;
+  --ok:#17744A; --ok-soft:#E3F3EA; --warn:#8F5600; --warn-soft:#FBF0DC; --bad:#B42318; --bad-soft:#FDECEA;
+  --font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","맑은 고딕",system-ui,sans-serif;
+  --radius:10px;
+  --gutter-l:max(16px,env(safe-area-inset-left,0px));
+  --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+  font-size:clamp(15px,0.35vw + 14px,16px);line-height:1.7;
+  /* 한국어 문장이 단어 중간에서 끊기지 않게 */
+  word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{text-wrap:balance;letter-spacing:-0.01em}
+p,.hint,.small,.help,.notice,dd{text-wrap:pretty}
+.nw{white-space:nowrap}
+img{max-width:100%}
+[hidden]{display:none!important}
+.inner{max-width:880px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+
+/* ---------- 상단 ---------- */
+.gnb{background:var(--surface);border-bottom:1px solid var(--line)}
+.gnb .inner{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;text-decoration:none;color:var(--hy-blue)}
+.brand img{height:36px;width:auto}
+.brand .word{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.brand .en{font-size:12px;font-weight:700;letter-spacing:.16em}
+.brand .ko{font-size:15px;font-weight:700;color:var(--ink)}
+.brand.has-logo .en{display:none}
+.gnb .dept{font-size:13px;color:var(--muted);text-align:right}
+
+.hero{background:var(--hy-blue);color:#fff}
+.hero .inner{padding-block:clamp(28px,6vw,52px);display:flex;flex-direction:column;gap:14px}
+.hero .eyebrow{font-size:13px;font-weight:600;letter-spacing:.06em;opacity:.85}
+.hero h1{font-size:clamp(24px,4.2vw + 10px,38px);line-height:1.3;font-weight:800}
+.hero p{opacity:.92;font-size:clamp(15px,0.5vw + 13px,17.5px);line-height:1.75}
+.meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:6px}
+.meta .wide{grid-column:1/-1}
+.meta .inst{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:4px}
+.meta .inst span{white-space:nowrap;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.16);font-size:.95em}
+@media (max-width:760px){.meta{grid-template-columns:repeat(2,minmax(0,1fr))}.meta .last{grid-column:1/-1}}
+@media (max-width:340px){.meta{grid-template-columns:1fr}}
+.meta div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:8px;padding:10px 14px;min-width:0}
+.meta dt{font-size:12px;opacity:.8}
+.meta dd{margin:0;font-weight:700}
+
+main .inner{padding-block:28px 56px;display:flex;flex-direction:column;gap:18px}
+
+/* ---------- 알림 ---------- */
+.notice{padding:12px 16px;border-radius:8px;font-size:14.5px;background:var(--hy-blue-soft);border:1px solid var(--hy-blue-line)}
+.notice.ok{background:var(--ok-soft);border-color:#B5DEC8}
+.notice.warn{background:var(--warn-soft);border-color:#EED3A4}
+.notice.bad{background:var(--bad-soft);border-color:#F2C2BC}
+.notice strong{font-weight:700}
+.notice.receipt{display:flex;flex-direction:column;gap:8px;padding:16px 18px}
+.rc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+.rc-label{font-weight:700;color:var(--ok)}
+.rc-no{font-size:clamp(22px,4vw,28px);font-weight:800;color:var(--hy-blue);letter-spacing:.02em;font-variant-numeric:tabular-nums}
+
+/* ---------- 설문 블록 ---------- */
+form{display:flex;flex-direction:column;gap:18px}
+.block{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(18px,3.5vw,28px);display:flex;flex-direction:column;gap:18px;min-width:0}
+.block.invalid{border-color:var(--bad);box-shadow:0 0 0 1px var(--bad)}
+.qhead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:start;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.qnum{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--hy-blue);color:#fff;font-weight:800;font-size:15px;flex:none}
+.qnum.basic{background:var(--hy-blue-soft);color:var(--hy-blue)}
+.qhead h2{font-size:clamp(16px,1vw + 13px,18.5px);line-height:1.5;font-weight:700;padding-top:3px}
+.qhead .hint{grid-column:2;color:var(--muted);font-size:14.5px}
+.qhead .hint.note{margin-top:6px;padding:9px 12px;border-radius:8px;background:var(--hy-blue-soft);color:var(--hy-blue-deep)}
+.qhead .hint.note b{margin-right:6px}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+@media (max-width:560px){.grid2{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.label{font-size:14px;font-weight:600}
+.req{color:var(--bad);margin-left:2px}
+.opt{color:var(--muted);font-weight:400;margin-left:4px;font-size:13px}
+.help{display:block;color:var(--muted);font-size:13px;font-weight:400;margin-top:-2px}
+input[type=text],input[type=email],input[type=tel],input[type=number],input[type=url],input[type=password],textarea{
+  font:inherit;font-size:16px;/* iOS 확대 방지 */color:var(--ink);background:#FBFCFD;border:1px solid var(--line);border-radius:8px;padding:10px 12px;width:100%;min-width:0}
+select{font:inherit;font-size:16px;color:var(--ink);background:#FBFCFD url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%235B6678' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+  border:1px solid var(--line);border-radius:8px;padding:10px 36px 10px 12px;width:100%;min-width:0;appearance:none;-webkit-appearance:none;text-overflow:ellipsis;cursor:pointer}
+select:disabled{color:var(--muted);background-color:var(--bg);cursor:not-allowed}
+select:focus{outline:none;border-color:var(--hy-blue);box-shadow:0 0 0 3px var(--hy-blue-soft)}
+.field.invalid select{border-color:var(--bad)}
+textarea{resize:vertical;min-height:110px;line-height:1.65}
+input:focus,textarea:focus{outline:none;border-color:var(--hy-blue);box-shadow:0 0 0 3px var(--hy-blue-soft)}
+.field.invalid input,.field.invalid textarea{border-color:var(--bad)}
+.field.invalid .drop{border-color:var(--bad);background:var(--bad-soft)}
+.filechip.sent{background:var(--ok-soft)}
+.counter{font-size:12px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+
+.choices{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr));gap:8px}
+.choice{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;cursor:pointer;background:#FBFCFD;font-size:14.5px;line-height:1.45;min-width:0}
+.choice input{accent-color:var(--hy-blue);margin:0;width:18px;height:18px;flex:none}
+.choice:has(input:checked){border-color:var(--hy-blue);background:var(--hy-blue-soft);font-weight:600;color:var(--hy-blue-deep)}
+.choice:focus-within{outline:2px solid var(--hy-blue);outline-offset:1px}
+.avail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.avail .choice{justify-content:center;padding:13px 8px;text-align:center}
+.sub{display:flex;flex-direction:column;gap:14px;padding:16px;border-radius:8px;background:var(--bg)}
+
+.drop{border:1.5px dashed var(--hy-blue-line);border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:8px;background:#FBFCFD}
+.drop.over{border-color:var(--hy-blue);background:var(--hy-blue-soft)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.filechip{display:inline-flex;flex-wrap:wrap;gap:4px 10px;align-items:center;padding:7px 12px;border-radius:8px;background:var(--hy-blue-soft);font-size:14px;max-width:100%;min-width:0}
+.small{font-size:13px;color:var(--muted)}
+.progress{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.progress i{display:block;height:100%;background:var(--hy-blue);width:0;transition:width .3s}
+
+.btn{appearance:none;font:inherit;font-weight:700;border-radius:8px;padding:11px 20px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;line-height:1.3}
+.btn:hover{border-color:var(--hy-blue);color:var(--hy-blue)}
+.btn.primary{background:var(--hy-blue);border-color:var(--hy-blue);color:#fff}
+.btn.primary:hover{background:var(--hy-blue-deep);color:#fff}
+.btn.text{border:0;background:none;padding:4px 6px;color:var(--hy-blue);font-weight:600}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--hy-blue);outline-offset:2px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.actions .small{flex:1 1 260px}
+.actions .btn.primary{flex:0 1 220px;padding-block:14px}
+
+/* ---------- 관리자 ---------- */
+.login{max-width:420px;width:100%;margin:0 auto}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.kpi b{display:block;font-size:28px;font-weight:800;color:var(--hy-blue);font-variant-numeric:tabular-nums;line-height:1.2}
+.kpi span{font-size:13px;color:var(--muted)}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center}
+.list{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.card > button{all:unset;box-sizing:border-box;display:grid;width:100%;cursor:pointer;padding:14px 18px;gap:8px 16px;
+  grid-template-columns:minmax(0,1.3fr) minmax(0,1.4fr) auto auto}
+.card > button:focus-visible{outline:2px solid var(--hy-blue);outline-offset:-2px}
+.card > button:hover{background:#FAFBFD}
+.who b{display:block}
+.pills{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.pill{display:inline-flex;gap:4px;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.pill.yes{background:var(--ok-soft);color:var(--ok)} .pill.cond{background:var(--warn-soft);color:var(--warn)} .pill.no{background:var(--bad-soft);color:var(--bad)} .pill.none{background:var(--bg);color:var(--muted)}
+.date{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+.detail{border-top:1px solid var(--line);padding:16px 18px;background:#FBFCFD}
+.dl{display:grid;grid-template-columns:minmax(120px,170px) minmax(0,1fr);gap:8px 18px;font-size:14px;margin:0}
+.dl dt{color:var(--muted);font-weight:600}
+.dl dd{margin:0;white-space:pre-wrap}
+.dl a{color:var(--hy-blue);font-weight:600}
+.empty{padding:36px 16px;text-align:center;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius)}
+.preview-tag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:4px;background:var(--warn-soft);color:var(--warn);margin-left:6px;vertical-align:middle}
+
+footer{background:var(--hy-blue-deep);color:rgba(255,255,255,.82);font-size:13px}
+footer .inner{padding-block:22px calc(22px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between}
+footer a{color:inherit}
+
+@media (max-width:720px){
+  .card > button{grid-template-columns:minmax(0,1fr) auto}
+  .card .dept{grid-column:1/-1;order:3}
+  .card .pills{grid-column:1/-1;order:4}
+  .gnb .dept{display:none}
+}
+@media (max-width:480px){
+  .qhead{grid-template-columns:auto minmax(0,1fr);align-items:center;gap:10px 12px}
+  .qhead h2{padding-top:0}
+  .qhead .hint{grid-column:1/-1}
+  .qnum{width:30px;height:30px;font-size:14px}
+  textarea{min-height:140px}
+  .meta div{padding:9px 12px}
+  .avail{grid-template-columns:1fr}
+  .dl{grid-template-columns:1fr;gap:2px}
+  .dl dd{margin-bottom:10px}
+  .actions .btn.primary{flex:1 1 100%}
+}
+@media (hover:none){.drag-hint{display:none}}
+@media (min-width:1400px){body{font-size:16.5px}.inner{max-width:920px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="gnb">
+  <div class="inner">
+    <a class="brand" id="brand" href="./">
+      <img src="assets/logo.png" alt="한양대학교" onload="document.getElementById('brand').classList.add('has-logo')" onerror="this.remove()">
+      <span class="word"><span class="en">HANYANG UNIVERSITY</span><span class="ko">한양대학교 대학원전략처</span></span>
+    </a>
+    <span class="dept">대학원전략팀</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="inner">
+    <span class="eyebrow" id="heroEyebrow">대학원전략처 대학원전략팀</span>
+    <h1 id="heroTitle">2026년 독일 BK 연구교류 출장 사전 설문</h1>
+    <p id="heroLede"><span class="nw">2026.10.31.(토)</span> – <span class="nw">2026.11.06.(금)</span> 진행될 ‘2026년 독일 BK 연구교류 출장’과 관련해서 관련 교수님들의 연구분야 및 소개, 방문 기관과 추진 가능한 협력 방안, 학생 교환 및 파견과 관련해서 설문조사를 진행합니다.</p>
+    <dl class="meta" id="meta">
+      <div class="wide"><dt>방문 기관</dt><dd id="metaInst"></dd></div>
+      <div><dt>출장 기간</dt><dd><span class="nw">2026.10.31.(토)</span> – <span class="nw">11.06.(금)</span></dd></div>
+      <div><dt>제출 마감</dt><dd id="metaDue"><span class="nw">2026.10.22.(목)</span> <span class="nw">오후 5시</span></dd></div>
+      <div class="last"><dt>문의</dt><dd id="metaContact">대학원전략처 대학원전략팀</dd></div>
+    </dl>
+  </div>
+</section>
+
+<main>
+<!-- ================= 설문 ================= -->
+<div class="inner" id="surveyView">
+  <div class="notice" id="status">작성 후 맨 아래 <strong>제출하기</strong>를 눌러 주세요. 약 5~10분 걸립니다. 제출하면 접수번호가 부여되고 안내 메일이 발송됩니다. 같은 이메일로 다시 제출하시면 최신 내용으로 수정됩니다.</div>
+
+  <form id="survey" novalidate>
+    <div class="block">
+      <div class="qhead"><span class="qnum basic">i</span><h2>기본 정보</h2></div>
+      <div class="grid2">
+        <div class="field"><label class="label" for="f_name">성명<span class="req">*</span></label><input type="text" id="f_name" autocomplete="name" placeholder="예) 홍길동"></div>
+        <div class="field"><label class="label" for="f_position">직위<span class="req">*</span></label>
+          <select id="f_position">
+            <option value="">선택해 주세요</option>
+            <option>교수</option><option>부교수</option><option>조교수</option><option>석좌·특훈교수</option><option>연구교수</option><option value="기타">기타</option>
+          </select></div>
+        <div class="field full" id="w_posother" hidden><label class="label" for="f_position_other">직위 (기타)</label><input type="text" id="f_position_other" placeholder="직위를 적어 주세요"></div>
+        <div class="field"><label class="label" for="f_college">단과대학 / 대학원<span class="req">*</span></label>
+          <select id="f_college"><option value="">선택해 주세요</option></select></div>
+        <div class="field"><label class="label" for="f_dept">학과 / 전공<span class="req">*</span></label>
+          <select id="f_dept" disabled><option value="">단과대학 먼저 선택</option></select></div>
+        <div class="field full" id="w_deptother" hidden><label class="label" for="f_dept_other">소속 직접 입력</label><input type="text" id="f_dept_other" placeholder="예) ○○연구소"></div>
+        <div class="field"><label class="label" for="f_email">이메일<span class="req">*</span></label><input type="email" id="f_email" autocomplete="email" inputmode="email" placeholder="name@hanyang.ac.kr"></div>
+        <div class="field"><label class="label" for="f_phone">연락처<span class="opt">선택</span></label><input type="tel" id="f_phone" autocomplete="tel" placeholder="예) 02-2220-0000"></div>
+      </div>
+    </div>
+
+    <!-- 1 -->
+    <div class="block">
+      <div class="qhead"><span class="qnum">1</span><h2>주요 연구 분야 및 관심 분야, 향후 협력 희망 분야</h2>
+        <p class="hint">주요 연구 분야, 관심 분야 키워드, 향후 협력 희망 분야를 기입해 주시고, 독일 방문 연구소에 전달될 예정인 교수님의 연구 소개 발표자료를 업로드해 주세요.</p>
+        <p class="hint note"><b>* 발표자료</b> PPT <span class="nw">5–8장</span> 내외, 발표 <span class="nw">5–10분</span> 내외 예정 (주요 연구분야, 국제협력 및 공동연구 가능 분야 중심)</p></div>
+      <div class="field"><label class="label" for="q1_main">주요 연구 분야<span class="req">*</span></label>
+        <textarea id="q1_main" maxlength="1500" placeholder="핵심 연구 주제와 대표 성과를 간단히 적어 주세요."></textarea>
+        <div class="counter" data-for="q1_main"></div></div>
+      <div class="field"><label class="label" for="q1_keywords">관심 분야 키워드<span class="req">*</span><span class="help">쉼표로 구분해 주세요</span></label>
+        <input type="text" id="q1_keywords" placeholder="예) 이차전지, 고체전해질"></div>
+      <div class="field"><label class="label" for="q1_wish">향후 협력 희망 분야<span class="req">*</span></label>
+        <textarea id="q1_wish" maxlength="1500" placeholder="방문 기관과 함께 연구하고 싶은 주제나 방향을 적어 주세요."></textarea>
+        <div class="counter" data-for="q1_wish"></div></div>
+      <div class="field">
+        <span class="label">연구 소개 발표자료<span class="req">*</span><span class="help">독일 방문 연구소 전달용 · PPT 5–8장 내외 · PPTX 또는 PDF, 10MB 이하</span></span>
+        <div class="drop" id="drop">
+          <div class="row"><button type="button" class="btn" id="pickBtn">파일 선택</button><span class="small drag-hint">또는 이 상자에 파일을 끌어다 놓으세요</span></div>
+          <input type="file" id="f_file" accept=".pptx,.pdf" hidden>
+          <div id="fileInfo" class="row"></div>
+          <div class="progress" id="prog" hidden><i></i></div>
+          <span class="small">구버전 .ppt 파일은 PowerPoint에서 ‘다른 이름으로 저장 → .pptx’로 바꿔 올려 주세요.</span>
+        </div>
+      </div>
+      <div class="field"><label class="label" for="q1_link">자료 링크<span class="opt">선택</span><span class="help">파일이 10MB를 넘으면 업로드 대신 OneDrive·Google Drive 공유 링크를 넣어 주세요</span></label>
+        <input type="url" id="q1_link" inputmode="url" placeholder="https://"></div>
+    </div>
+
+    <!-- 2 -->
+    <div class="block">
+      <div class="qhead"><span class="qnum">2</span><h2>방문 기관과 추진 가능한 연구협력 방안</h2>
+        <p class="hint">해당하는 항목을 모두 고르고 구체적인 내용을 적어 주세요.</p></div>
+      <div class="field"><span class="label">협력 희망 기관<span class="help">여러 곳을 고르셔도 됩니다</span></span>
+        <div class="choices" id="q2_insts">
+          <label class="choice"><input type="checkbox" value="막스플랑크 연구소">막스플랑크 연구소</label>
+          <label class="choice"><input type="checkbox" value="아헨공대">아헨공대</label>
+          <label class="choice"><input type="checkbox" value="드레스덴 공대">드레스덴 공대</label>
+          <label class="choice"><input type="checkbox" value="율리히 연구소">율리히 연구소</label>
+        </div></div>
+      <span class="label" style="margin-bottom:-8px">협력 방안</span>
+      <div class="choices" id="q2_types">
+        <label class="choice"><input type="checkbox" value="공동연구 프로젝트">공동연구 프로젝트</label>
+        <label class="choice"><input type="checkbox" value="국제공동과제 공동 신청">국제공동과제 공동 신청</label>
+        <label class="choice"><input type="checkbox" value="공동 논문·학술발표">공동 논문·학술발표</label>
+        <label class="choice"><input type="checkbox" value="공동 세미나·워크숍">공동 세미나·워크숍</label>
+        <label class="choice"><input type="checkbox" value="학생·연구자 교환">학생·연구자 교환</label>
+        <label class="choice"><input type="checkbox" value="공동 지도·공동학위">공동 지도·공동학위</label>
+        <label class="choice"><input type="checkbox" value="장비·시설 공동 활용">장비·시설 공동 활용</label>
+        <label class="choice"><input type="checkbox" value="초청 강연·방문 연구">초청 강연·방문 연구</label>
+        <label class="choice"><input type="checkbox" value="기타" id="q2_otherChk">기타</label>
+      </div>
+      <div class="field" id="w_q2other" hidden><label class="label" for="q2_other">기타 내용</label><input type="text" id="q2_other"></div>
+      <div class="field"><label class="label" for="q2_detail">구체적인 협력 방안</label>
+        <textarea id="q2_detail" maxlength="1500" placeholder="예) 상대 기관 ○○ 교수 연구실과 공동연구 추진, 2027년 상반기 공동 워크숍 희망"></textarea>
+        <div class="counter" data-for="q2_detail"></div></div>
+    </div>
+
+    <!-- 3 -->
+    <div class="block" id="b_q3">
+      <div class="qhead"><span class="qnum">3</span><h2>향후 방문 기관의 학생·연구자를 교수님 연구실에서 수용하실 수 있습니까?</h2>
+        <p class="hint">실질적인 연구교류를 위한 단기 방문(인턴·방문연구) 수용 여부입니다.</p></div>
+      <div class="avail" role="radiogroup" aria-label="수용 가능 여부">
+        <label class="choice"><input type="radio" name="q3_avail" value="가능">가능</label>
+        <label class="choice"><input type="radio" name="q3_avail" value="조건부 가능">조건부 가능</label>
+        <label class="choice"><input type="radio" name="q3_avail" value="어려움">어려움</label>
+      </div>
+      <div class="sub" id="q3_sub" hidden>
+        <div class="grid2"><div class="field"><label class="label" for="q3_count">수용 가능 인원 (명)</label><input type="number" id="q3_count" min="1" max="50" inputmode="numeric"></div></div>
+        <div class="field"><span class="label">가능 시기</span>
+          <div class="choices" id="q3_terms">
+            <label class="choice"><input type="checkbox" value="2026–27 동계방학 (12~2월)">2026–27 동계방학 (12~2월)</label>
+            <label class="choice"><input type="checkbox" value="2027 하계방학 (6~8월)">2027 하계방학 (6~8월)</label>
+            <label class="choice"><input type="checkbox" value="학기 중도 가능">학기 중도 가능</label>
+          </div></div>
+        <div class="field"><span class="label">수용 대상</span>
+          <div class="choices" id="q3_targets">
+            <label class="choice"><input type="checkbox" value="학부생">학부생</label>
+            <label class="choice"><input type="checkbox" value="석사과정">석사과정</label>
+            <label class="choice"><input type="checkbox" value="박사과정">박사과정</label>
+            <label class="choice"><input type="checkbox" value="박사후연구원">박사후연구원</label>
+            <label class="choice"><input type="checkbox" value="교원·연구원">교원·연구원</label>
+          </div></div>
+      </div>
+      <div class="field"><label class="label" for="q3_note">조건 또는 비고</label>
+        <textarea id="q3_note" maxlength="800" style="min-height:80px" placeholder="예) 체재비 지원 시 가능, 연구 분야가 맞는 대학원생 우선 등"></textarea></div>
+    </div>
+
+    <!-- 4 -->
+    <div class="block" id="b_q4">
+      <div class="qhead"><span class="qnum">4</span><h2>향후 교수님 연구실 또는 관련 사업단 소속 학생·연구자를 방문 기관에 파견하실 수 있습니까?</h2>
+        <p class="hint">상대 기관 연구실로의 단기 파견(방문연구·인턴십) 가능 여부입니다.</p></div>
+      <div class="avail" role="radiogroup" aria-label="파견 가능 여부">
+        <label class="choice"><input type="radio" name="q4_avail" value="가능">가능</label>
+        <label class="choice"><input type="radio" name="q4_avail" value="조건부 가능">조건부 가능</label>
+        <label class="choice"><input type="radio" name="q4_avail" value="어려움">어려움</label>
+      </div>
+      <div class="sub" id="q4_sub" hidden>
+        <div class="field"><span class="label">파견 주체</span>
+          <div class="choices" id="q4_units">
+            <label class="choice"><input type="checkbox" value="교수 연구실">교수 연구실</label>
+            <label class="choice"><input type="checkbox" value="관련 사업단·센터">관련 사업단·센터</label>
+          </div></div>
+        <div class="grid2"><div class="field"><label class="label" for="q4_count">파견 가능 인원 (명)</label><input type="number" id="q4_count" min="1" max="50" inputmode="numeric"></div></div>
+        <div class="field"><span class="label">가능 시기</span>
+          <div class="choices" id="q4_terms">
+            <label class="choice"><input type="checkbox" value="2026–27 동계방학 (12~2월)">2026–27 동계방학 (12~2월)</label>
+            <label class="choice"><input type="checkbox" value="2027 하계방학 (6~8월)">2027 하계방학 (6~8월)</label>
+            <label class="choice"><input type="checkbox" value="학기 중도 가능">학기 중도 가능</label>
+          </div></div>
+        <div class="field"><span class="label">파견 대상</span>
+          <div class="choices" id="q4_targets">
+            <label class="choice"><input type="checkbox" value="학부생">학부생</label>
+            <label class="choice"><input type="checkbox" value="석사과정">석사과정</label>
+            <label class="choice"><input type="checkbox" value="박사과정">박사과정</label>
+            <label class="choice"><input type="checkbox" value="박사후연구원">박사후연구원</label>
+            <label class="choice"><input type="checkbox" value="교원·연구원">교원·연구원</label>
+          </div></div>
+      </div>
+      <div class="field"><label class="label" for="q4_note">조건 또는 비고</label>
+        <textarea id="q4_note" maxlength="800" style="min-height:80px" placeholder="예) 사업단 해외연수 예산으로 항공·체재비 지원 가능 등"></textarea></div>
+    </div>
+
+    <div class="actions">
+      <span class="small" id="saveNote">* 표시는 필수 항목입니다.</span>
+      <button type="submit" class="btn primary" id="submitBtn">제출하기</button>
+    </div>
+  </form>
+</div>
+
+<!-- ================= 관리자 ================= -->
+<div class="inner" id="adminView" hidden>
+  <div class="block login" id="loginBox">
+    <div class="qhead"><span class="qnum basic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><h2>관리자 로그인</h2><p class="hint">대학원전략팀 담당자만 응답을 볼 수 있습니다.</p></div>
+    <form id="loginForm" novalidate>
+      <div class="field"><label class="label" for="pw">관리자 비밀번호</label><input type="password" id="pw" autocomplete="current-password"></div>
+      <div class="notice bad" id="loginMsg" hidden></div>
+      <button type="submit" class="btn primary" id="loginBtn">로그인</button>
+    </form>
+  </div>
+
+  <div id="dash" hidden style="display:flex;flex-direction:column;gap:18px">
+    <div class="toolbar">
+      <h2 style="font-size:20px">응답 현황</h2>
+      <div class="row"><button type="button" class="btn" id="refreshBtn">새로고침</button><button type="button" class="btn" id="logoutBtn">로그아웃</button></div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><b id="k_total">0</b><span>제출한 교수님</span></div>
+      <div class="kpi"><b id="k_host">0</b><span>수용 가능 (조건부 포함)</span></div>
+      <div class="kpi"><b id="k_send">0</b><span>파견 가능 (조건부 포함)</span></div>
+      <div class="kpi"><b id="k_file">0</b><span>연구 소개 자료 제출</span></div>
+    </div>
+
+    <div class="block">
+      <div class="qhead"><span class="qnum basic">i</span><h2>설문 안내 정보</h2><p class="hint">설문 상단에 표시됩니다. 비워 두면 기본값(방문 기관 4곳, 마감 2026.10.22.(목) 오후 5시, 문의 대학원전략처 대학원전략팀)이 보입니다. 기관은 쉼표로 구분해 주세요.</p></div>
+      <div class="grid2">
+        <div class="field full"><label class="label" for="c_inst">방문 기관<span class="help">쉼표로 구분해 주세요</span></label><input type="text" id="c_inst" placeholder="기관명, 기관명"></div>
+        <div class="field"><label class="label" for="c_due">제출 마감</label><input type="text" id="c_due" placeholder="2026.10.22.(목) 오후 5시"></div>
+        <div class="field full"><label class="label" for="c_contact">문의</label><input type="text" id="c_contact" placeholder="예) 최○○ 대리 (내선)"></div>
+      </div>
+      <div class="actions"><span class="small" id="cfgNote"></span><button type="button" class="btn primary" id="cfgSave">안내 정보 저장</button></div>
+    </div>
+
+    <div class="toolbar">
+      <span class="small">카드를 누르면 전체 응답이 펼쳐집니다. 원본은 연결된 구글 시트에도 그대로 쌓입니다.</span>
+      <button type="button" class="btn" id="csvBtn">엑셀용 CSV 내려받기</button>
+    </div>
+    <div class="list" id="list"></div>
+    <div class="notice bad" id="adminMsg" hidden></div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="inner">
+    <span>한양대학교 대학원전략처 대학원전략팀</span>
+    <span><a href="#admin" id="adminLink">관리자</a></span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   ▼▼ Apps Script 배포 후 받은 웹 앱 URL을 따옴표 안에 붙여 넣으세요 ▼▼
+   비워 두면 '미리보기 모드'로 동작합니다(저장되지 않음).
+   ============================================================ */
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwxmYczGPsefO53G5o624LQ21YMKholyjy2TP0QaYpfUvDZykLCWZTuzdWTGMeKtOYfJw/exec";
+/* ============================================================ */
+
+(function(){
+const $ = id => document.getElementById(id);
+const PREVIEW = !SCRIPT_URL;
+const MAX_BYTES = 10*1024*1024;
+const DEPTS = {"공과대학": ["건축학부", "건축공학부", "건설환경공학과", "도시공학과", "자원환경공학과", "융합전자공학부", "컴퓨터소프트웨어학부", "정보시스템학과", "전기·생체공학부 전기공학전공", "전기·생체공학부 바이오메디컬공학전공", "신소재공학부", "화학공학과", "생명공학과", "유기나노공학과", "에너지공학과", "기계공학부", "원자력공학과", "산업공학과", "미래자동차공학과", "데이터사이언스학부", "반도체공학과"], "의과대학": ["의예과", "의학과 해부·세포생물학교실", "의학과 생리학교실", "의학과 생화학·분자생물학교실", "의학과 병리학교실", "의학과 미생물학교실", "의학과 환경의생물학교실", "의학과 약리학교실", "의학과 예방의학교실", "의학과 유전학교실", "의학과 의공학교실", "의학과 내과학교실", "의학과 신경과학교실", "의학과 외과학교실", "의학과 정형외과학교실", "의학과 신경외과학교실", "의학과 흉부외과학교실", "의학과 마취통증의학교실", "의학과 소아·청소년과학교실", "의학과 산부인과학교실", "의학과 정신건강의학교실", "의학과 피부과학교실", "의학과 비뇨기과학교실", "의학과 이비인후과학교실", "의학과 안과학교실", "의학과 영상의학과학교실", "의학과 방사선종양학교실", "의학과 진단검사의학교실", "의학과 치과학교실", "의학과 성형외과학교실", "의학과 재활의학교실", "의학과 가정의학교실", "의학과 직업환경의학교실", "의학과 핵의학교실", "의학과 응급의학교실", "의학과 의학교육학교실", "의학과 의료인문학교실", "의학과 교육협력지원교실"], "간호대학": ["간호학과"], "인문과학대학": ["국어국문학과", "중어중문학과", "영어영문학과", "독어독문학과", "사학과", "철학과"], "사회과학대학": ["정치외교학과", "사회학과", "미디어커뮤니케이션학과", "관광학부"], "자연과학대학": ["수학과", "물리학과", "화학과", "생명과학과"], "정책과학대학": ["정책학과", "행정학과"], "경제금융대학": ["경제금융학부"], "경영대학": ["경영학부", "파이낸스경영학과"], "사범대학": ["교육학과", "교육공학과", "국어교육과", "영어교육과", "수학교육과", "응용미술교육과"], "생활과학대학": ["의류학과", "식품영양학과", "실내건축디자인학과"], "음악대학": ["성악과", "작곡과", "피아노과", "관현악과", "국악과"], "예술·체육대학": ["스포츠산업과학부 스포츠매니지먼트전공", "스포츠산업과학부 스포츠사이언스전공", "연극영화학과", "무용학과"], "국제대학": ["국제학부", "글로벌콘텐츠융합학부"], "기술혁신대학": ["산업융합학부"], "한양YK인터칼리지": ["한양인터칼리지학부"], "도시대학원": ["도시·지역개발경영학과 도시개발경영전공", "도시·지역개발경영학과 부동산학 전공", "도시·지역개발경영학과 도시재생설계전공", "도시·지역개발경영학과 랜드스케이프어바니즘전공"], "국제대학원": ["동아시아학과", "지속가능경제학과", "글로벌 전략‧정보학과", "한국학과"], "경영전문대학원": ["경영전문대학원"], "법학전문대학원": ["법학전문대학원"], "의생명공학전문대학원": ["의생명과학과", "생체의공학과", "임상의과학자", "생명의료정보학과"], "기술경영전문대학원": ["기술경영학과"]};
+const OTHER = '기타 (직접 입력)';
+const DEFAULT_INST = '막스플랑크 연구소, 아헨공대, 드레스덴 공대, 율리히 연구소';
+const SENT_KEY = 'hy_bk_de_sent_v1';
+const DRAFT_KEY = 'hy_bk_de_draft_v1', PW_KEY = 'hy_bk_de_admin';
+const S = { file:null, busy:false, rows:[], headers:[], open:null, pw:'' };
+
+/* ---------- 공통 ---------- */
+const store = {
+  get(k, s){ try{ return (s?sessionStorage:localStorage).getItem(k); }catch(e){ return null; } },
+  set(k, v, s){ try{ (s?sessionStorage:localStorage).setItem(k, v); }catch(e){} },
+  del(k, s){ try{ (s?sessionStorage:localStorage).removeItem(k); }catch(e){} }
+};
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmtSize = b => b>1048576 ? (b/1048576).toFixed(1)+'MB' : Math.max(1,Math.round(b/1024))+'KB';
+async function api(payload){
+  const res = await fetch(SCRIPT_URL, { method:'POST', body:JSON.stringify(payload) }); // text/plain → CORS 사전요청 없음
+  if(!res.ok) throw { error:'network' };
+  const j = await res.json();
+  if(!j.ok) throw j;
+  return j;
+}
+function setStatus(kind, html){ const el=$('status'); el.className='notice'+(kind?' '+kind:''); el.innerHTML=html; }
+function applyConfig(c){
+  c = c||{};
+  const inst=$('metaInst'); inst.innerHTML='';
+  const box=document.createElement('span'); box.className='inst';
+  (c.institution || DEFAULT_INST).split(/[,，·]/).map(x=>x.trim()).filter(Boolean).forEach(n=>{ const t=document.createElement('span'); t.textContent=n; box.appendChild(t); });
+  inst.appendChild(box);
+  $('metaDue').textContent = c.due || '2026.10.22.(목) 오후 5시';
+  $('metaContact').textContent = c.contact || '대학원전략처 대학원전략팀';
+  $('c_inst').value = c.institution||DEFAULT_INST; $('c_due').value = c.due||''; $('c_contact').value = c.contact||'';
+}
+function buildColleges(){
+  const sel=$('f_college');
+  Object.keys(DEPTS).concat([OTHER]).forEach(c=>{ const o=document.createElement('option'); o.value=o.textContent=c; sel.appendChild(o); });
+}
+function buildDepts(keep){
+  const c=$('f_college').value, sel=$('f_dept');
+  sel.innerHTML='';
+  const add=(v,t)=>{ const o=document.createElement('option'); o.value=v; o.textContent=t; sel.appendChild(o); };
+  if(!c || c===OTHER){ add('', c===OTHER?'아래 칸에 직접 입력':'단과대학 먼저 선택'); sel.disabled=true; }
+  else { add('','선택해 주세요'); DEPTS[c].forEach(d=>add(d,d)); sel.disabled=false; if(keep && DEPTS[c].includes(keep)) sel.value=keep; }
+}
+
+/* ---------- 설문 ---------- */
+const checked = id => [...document.querySelectorAll('#'+id+' input:checked')].map(i=>i.value);
+const setChecked = (id, vals) => document.querySelectorAll('#'+id+' input').forEach(i=>{ i.checked=(vals||[]).includes(i.value); });
+const radio = n => (document.querySelector('input[name="'+n+'"]:checked')||{}).value || '';
+const setRadio = (n, v) => document.querySelectorAll('input[name="'+n+'"]').forEach(i=>{ i.checked=i.value===v; });
+const num = id => $(id).value ? Number($(id).value) : '';
+
+function collect(){
+  return {
+    name:$('f_name').value.trim(),
+    position: $('f_position').value==='기타' ? ($('f_position_other').value.trim() ? '기타: '+$('f_position_other').value.trim() : '기타') : $('f_position').value,
+    college:$('f_college').value,
+    dept: $('f_college').value===OTHER ? $('f_dept_other').value.trim() : $('f_dept').value,
+    email:$('f_email').value.trim(), phone:$('f_phone').value.trim(),
+    q1_main:$('q1_main').value.trim(), q1_keywords:$('q1_keywords').value.trim(), q1_wish:$('q1_wish').value.trim(), q1_link:$('q1_link').value.trim(),
+    q2_insts:checked('q2_insts'), q2_types:checked('q2_types'), q2_other:$('q2_other').value.trim(), q2_detail:$('q2_detail').value.trim(),
+    q3_avail:radio('q3_avail'), q3_count:num('q3_count'), q3_terms:checked('q3_terms'), q3_targets:checked('q3_targets'), q3_note:$('q3_note').value.trim(),
+    q4_avail:radio('q4_avail'), q4_units:checked('q4_units'), q4_count:num('q4_count'), q4_terms:checked('q4_terms'), q4_targets:checked('q4_targets'), q4_note:$('q4_note').value.trim()
+  };
+}
+function fill(d){
+  if(!d) return;
+  const t=(id,v)=>{ if($(id)) $(id).value=v??''; };
+  ['name','email','phone'].forEach(k=>t('f_'+k,d[k]));
+  const pos=d.position||'';
+  if(pos.startsWith('기타')){ $('f_position').value='기타'; $('f_position_other').value=pos.replace(/^기타:?\s*/,''); } else $('f_position').value=pos;
+  if(d.college && (DEPTS[d.college]||d.college===OTHER)){ $('f_college').value=d.college; buildDepts(d.dept); if(d.college===OTHER) $('f_dept_other').value=d.dept||''; }
+  ['q1_main','q1_keywords','q1_wish','q1_link','q2_other','q2_detail','q3_count','q3_note','q4_count','q4_note'].forEach(k=>t(k,d[k]));
+  ['q2_insts','q2_types','q3_terms','q3_targets','q4_units','q4_terms','q4_targets'].forEach(k=>setChecked(k,d[k]));
+  setRadio('q3_avail',d.q3_avail); setRadio('q4_avail',d.q4_avail);
+  sync(); counters();
+}
+function sync(){
+  $('w_q2other').hidden = !$('q2_otherChk').checked;
+  $('w_posother').hidden = $('f_position').value!=='기타';
+  $('w_deptother').hidden = $('f_college').value!==OTHER;
+  const ok = v => v==='가능'||v==='조건부 가능';
+  $('q3_sub').hidden = !ok(radio('q3_avail'));
+  $('q4_sub').hidden = !ok(radio('q4_avail'));
+}
+function counters(){ document.querySelectorAll('.counter').forEach(c=>{ const t=$(c.dataset.for); c.textContent=t.value.length+' / '+t.maxLength+'자'; }); }
+function missing(d){
+  const m=[];
+  if(!d.name) m.push(['f_name','성명']);
+  if(!d.position) m.push(['f_position','직위']);
+  if(!d.college) m.push(['f_college','단과대학']);
+  else if(!d.dept) m.push([d.college===OTHER?'f_dept_other':'f_dept','학과']);
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) m.push(['f_email','이메일']);
+  if(!d.q1_main) m.push(['q1_main','1번 주요 연구 분야']);
+  if(!d.q1_keywords) m.push(['q1_keywords','1번 관심 분야 키워드']);
+  if(!d.q1_wish) m.push(['q1_wish','1번 협력 희망 분야']);
+  if(!S.file && !d.q1_link && !sentFile(d.email)) m.push(['drop','1번 연구 소개 발표자료']);
+  if(!d.q3_avail) m.push(['b_q3','3번 수용 여부']);
+  if(!d.q4_avail) m.push(['b_q4','4번 파견 여부']);
+  return m;
+}
+function refreshNote(){
+  if(S.busy) return;
+  const m = missing(collect());
+  $('saveNote').textContent = m.length ? '남은 필수 항목: '+m.map(x=>x[1]).join(', ') : '필수 항목을 모두 작성하셨습니다.';
+}
+let draftTimer;
+function saveDraft(){ clearTimeout(draftTimer); draftTimer=setTimeout(()=>store.set(DRAFT_KEY, JSON.stringify(collect())), 500); }
+
+function sentFile(email){
+  try{ const x=JSON.parse(store.get(SENT_KEY)||'null'); return x && x.email===String(email||'').trim().toLowerCase() ? x.name : ''; }catch(e){ return ''; }
+}
+function renderFile(){
+  const box=$('fileInfo'); box.innerHTML='';
+  if(!S.file){
+    const prev=sentFile($('f_email').value);
+    if(prev){ const c=document.createElement('span'); c.className='filechip sent'; c.textContent='제출된 파일: '+prev+' (바꾸려면 새 파일 선택)'; box.appendChild(c); }
+    return;
+  }
+  const chip=document.createElement('span'); chip.className='filechip';
+  const nm=document.createElement('span'); nm.textContent=S.file.name+' · '+fmtSize(S.file.size); chip.appendChild(nm);
+  const rm=document.createElement('button'); rm.type='button'; rm.className='btn text'; rm.textContent='빼기';
+  rm.onclick=()=>{ S.file=null; $('f_file').value=''; renderFile(); refreshNote(); }; chip.appendChild(rm);
+  box.appendChild(chip);
+}
+function takeFile(f){
+  if(!f) return;
+  if(!/\.(pptx|pdf)$/i.test(f.name)){ setStatus('warn','PPTX 또는 PDF 파일만 올릴 수 있습니다. 구버전 .ppt는 .pptx로 저장해 주세요.'); return; }
+  if(f.size>MAX_BYTES){ setStatus('warn','파일이 10MB를 넘습니다('+fmtSize(f.size)+'). 이미지를 압축하거나 PDF로 저장해 주시고, 어려우면 ‘자료 링크’에 공유 링크를 넣어 주세요.'); return; }
+  S.file=f; renderFile();
+  const fd=$('drop').closest('.field'); if(fd) fd.classList.remove('invalid'); refreshNote();
+}
+function readB64(f){
+  return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(String(r.result).split(',')[1]); r.onerror=()=>rej(r.error); r.readAsDataURL(f); });
+}
+
+function showReceipt(r, email){
+  const el=$('status'); el.className='notice ok receipt'; el.innerHTML='';
+  const head=document.createElement('div'); head.className='rc-head';
+  head.innerHTML='<span class="rc-label">'+(r.updated?'수정 접수 완료':'접수 완료')+(PREVIEW?' · 미리보기(저장 안 됨)':'')+'</span>';
+  const no=document.createElement('span'); no.className='rc-no'; no.textContent=r.receipt||'—'; head.appendChild(no);
+  const p=document.createElement('p');
+  p.textContent = (r.mailSent ? '접수 안내 메일을 '+email+' 로 보냈습니다. ' : '접수는 정상적으로 완료되었지만 안내 메일을 보내지 못했습니다. 접수번호를 메모해 두세요. ')
+    + '내용을 고치시려면 같은 이메일로 다시 제출해 주세요. 접수번호는 그대로 유지됩니다.';
+  el.appendChild(head); el.appendChild(p);
+}
+async function onSubmit(ev){
+  ev.preventDefault();
+  if(S.busy) return;
+  document.querySelectorAll('.invalid').forEach(e=>e.classList.remove('invalid'));
+  const d=collect(), m=missing(d);
+  if(m.length){
+    m.forEach(([id])=>{ const el=$(id); (el.closest('.field')||el).classList.add('invalid'); });
+    const first=$(m[0][0]); first.scrollIntoView({behavior:'smooth',block:'center'}); if(first.focus) first.focus({preventScroll:true});
+    setStatus('warn','<strong>필수 항목을 확인해 주세요.</strong> '+esc(m.map(x=>x[1]).join(', ')));
+    return;
+  }
+  S.busy=true; const btn=$('submitBtn'); btn.disabled=true; btn.textContent='제출 중…';
+  const bar=$('prog'), fillEl=bar.querySelector('i');
+  try{
+    let file=null;
+    if(S.file){ bar.hidden=false; fillEl.style.width='30%'; $('saveNote').textContent='자료를 올리는 중입니다. 창을 닫지 말아 주세요.';
+      file={ name:S.file.name, type:S.file.type||'', data:await readB64(S.file) }; fillEl.style.width='60%'; }
+    let r;
+    if(PREVIEW){ await sleep(700); r={ ok:true, updated:false, receipt:'BK2026-000', mailSent:true }; }
+    else r = await api({ action:'submit', data:d, file });
+    fillEl.style.width='100%';
+    store.set(DRAFT_KEY, JSON.stringify(d));
+    const prevSent = (()=>{ try{ return JSON.parse(store.get(SENT_KEY)||'null')||{}; }catch(e){ return {}; } })();
+    const keepName = prevSent.email===d.email.toLowerCase() ? prevSent.name : '';
+    store.set(SENT_KEY, JSON.stringify({ email:d.email.toLowerCase(), name:(S.file?S.file.name:keepName)||'', receipt:r.receipt||'' }));
+    S.file=null; $('f_file').value=''; renderFile();
+    showReceipt(r, d.email);
+    window.scrollTo({top:$('status').getBoundingClientRect().top+window.scrollY-16,behavior:'smooth'});
+  }catch(e){
+    const msg = { too_large:'파일이 10MB를 넘습니다.', bad_file:'PPTX 또는 PDF 파일만 올릴 수 있습니다.', missing:'필수 항목이 비어 있습니다.', missing_file:'연구 소개 발표자료를 올려 주세요.' }[e&&e.error];
+    setStatus('bad','<strong>제출하지 못했습니다.</strong> '+esc(msg||'네트워크 상태를 확인하고 다시 시도해 주세요. 계속 안 되면 대학원전략팀에 연락해 주세요.'));
+  }finally{
+    S.busy=false; btn.disabled=false; btn.textContent='제출하기'; setTimeout(()=>{ bar.hidden=true; fillEl.style.width='0'; },600); refreshNote();
+  }
+}
+
+/* ---------- 관리자 ---------- */
+const SAMPLE = [
+  { '접수번호':'BK2026-002','안내메일':'발송 2026-10-20 10:12','성명':'홍길동 (예시)','직위':'부교수','단과대학':'공과대학','학과':'기계공학부','이메일':'example1@hanyang.ac.kr',
+    '1.주요 연구 분야':'협동 로봇의 힘 제어, 촉각 센싱','1.관심 키워드':'로봇 매니퓰레이션, 촉각','1.협력 희망 분야':'의료용 로봇 공동연구',
+    '1.자료 파일명':'홍길동_연구소개.pptx','1.자료 파일 링크':'','2.협력 희망 기관':'아헨공대; 율리히 연구소','2.협력 방안':'공동연구 프로젝트; 학생·연구자 교환','2.구체적 방안':'2027년 하계 공동 워크숍',
+    '3.수용 여부':'가능','3.인원':2,'3.시기':'2027 하계방학 (6~8월)','3.대상':'석사과정; 박사과정','4.파견 여부':'조건부 가능','4.파견 주체':'교수 연구실','4.인원':1,'4.시기':'2026–27 동계방학 (12~2월)','4.조건·비고':'체재비 지원 시','최종 수정':'2026-10-20 10:12' },
+  { '접수번호':'BK2026-001','안내메일':'발송 2026-10-20 09:40','성명':'김한양 (예시)','직위':'교수','단과대학':'자연과학대학','학과':'화학과','이메일':'example2@hanyang.ac.kr','1.주요 연구 분야':'고체전해질 합성','1.협력 희망 분야':'계면 분석',
+    '2.협력 희망 기관':'막스플랑크 연구소','2.협력 방안':'공동 논문·학술발표','3.수용 여부':'어려움','4.파견 여부':'가능','4.인원':2,'최종 수정':'2026-10-20 09:40' }
+];
+const isYes = v => v==='가능'||v==='조건부 가능';
+function pill(label, v){ const c = v==='가능'?'yes':v==='조건부 가능'?'cond':v==='어려움'?'no':'none'; return '<span class="pill '+c+'">'+esc(label)+' '+esc(v||'미응답')+'</span>'; }
+function renderList(){
+  const L=S.rows;
+  $('k_total').textContent=L.length;
+  $('k_host').textContent=L.filter(r=>isYes(r['3.수용 여부'])).length;
+  $('k_send').textContent=L.filter(r=>isYes(r['4.파견 여부'])).length;
+  $('k_file').textContent=L.filter(r=>r['1.자료 파일명']||r['1.자료 링크']).length;
+  const box=$('list');
+  if(!L.length){ box.innerHTML='<div class="empty">아직 제출된 응답이 없습니다.</div>'; return; }
+  box.innerHTML = L.map((r,i)=>{
+    const open = S.open===i;
+    return '<div class="card"><button type="button" data-i="'+i+'" aria-expanded="'+open+'">'+
+      '<span class="who"><b>'+esc(r['성명'])+(PREVIEW?'<span class="preview-tag">예시</span>':'')+'</b><span class="small">'+esc([r['접수번호'],r['직위']].filter(Boolean).join(' · '))+'</span></span>'+
+      '<span class="dept small">'+esc([r['단과대학'],r['학과']].filter(Boolean).join(' · '))+'</span>'+
+      '<span class="pills">'+pill('수용',r['3.수용 여부'])+pill('파견',r['4.파견 여부'])+'</span>'+
+      '<span class="date">'+esc(r['최종 수정']||'')+'</span>'+
+    '</button>'+(open?'<div class="detail">'+detail(r)+'</div>':'')+'</div>';
+  }).join('');
+}
+function detail(r){
+  const skip = new Set(['성명','직위','단과대학','학과','접수번호','파일ID','1.자료 파일 링크']);
+  let h='<dl class="dl">';
+  for(const k of (S.headers.length?S.headers:Object.keys(r))){
+    if(skip.has(k)) continue;
+    const v=r[k]; if(v===''||v==null) continue;
+    if(k==='1.자료 파일명'){
+      const url=r['1.자료 파일 링크'];
+      h+='<dt>연구 소개 자료</dt><dd>'+(url?'<a href="'+esc(url)+'" target="_blank" rel="noopener">'+esc(v)+' 열기</a>':esc(v))+'</dd>'; continue;
+    }
+    if(k==='1.자료 링크'){ h+='<dt>'+esc(k)+'</dt><dd><a href="'+esc(v)+'" target="_blank" rel="noopener">'+esc(v)+'</a></dd>'; continue; }
+    h+='<dt>'+esc(k)+'</dt><dd>'+esc(v)+'</dd>';
+  }
+  return h+'</dl>';
+}
+function adminMsg(t){ $('adminMsg').textContent=t||''; $('adminMsg').hidden=!t; }
+async function loadAdmin(pw){
+  if(PREVIEW){ S.rows=SAMPLE; S.headers=[]; renderList(); return; }
+  const r = await api({ action:'admin_list', password:pw });
+  S.rows = r.rows||[]; S.headers = r.headers||[];
+  applyConfig(r.config); renderList();
+}
+async function onLogin(ev){
+  ev.preventDefault();
+  const pw=$('pw').value; if(!pw && !PREVIEW) return;
+  $('loginBtn').disabled=true; $('loginMsg').hidden=true;
+  try{
+    await loadAdmin(pw);
+    S.pw=pw; store.set(PW_KEY, pw, true);
+    $('loginBox').hidden=true; $('dash').hidden=false; $('pw').value='';
+  }catch(e){
+    const m = { wrong_password:'비밀번호가 맞지 않습니다.', locked:'비밀번호를 여러 번 틀려 10분간 잠겼습니다. 잠시 뒤 다시 시도해 주세요.', no_password_set:'Apps Script에 관리자 비밀번호가 아직 설정되지 않았습니다. README의 2단계를 확인해 주세요.' }[e&&e.error];
+    $('loginMsg').textContent = m || '서버에 연결하지 못했습니다. 잠시 뒤 다시 시도해 주세요.'; $('loginMsg').hidden=false;
+  }finally{ $('loginBtn').disabled=false; }
+}
+function logout(){ S.pw=''; store.del(PW_KEY,true); S.rows=[]; $('dash').hidden=true; $('loginBox').hidden=false; }
+async function saveCfg(){
+  const c={ institution:$('c_inst').value.trim(), due:$('c_due').value.trim(), contact:$('c_contact').value.trim() };
+  $('cfgSave').disabled=true;
+  try{
+    if(PREVIEW) await sleep(300); else { const r=await api({ action:'config_set', password:S.pw, config:c }); applyConfig(r.config); }
+    $('cfgNote').textContent = PREVIEW ? '[미리보기] 저장되지 않았습니다.' : '저장했습니다. 설문 상단에 바로 반영됩니다.';
+  }catch(e){ $('cfgNote').textContent = e&&e.error==='wrong_password' ? '로그인이 만료되었습니다. 다시 로그인해 주세요.' : '저장하지 못했습니다.'; }
+  finally{ $('cfgSave').disabled=false; }
+}
+function csv(){
+  const heads = S.headers.length ? S.headers.filter(h=>h!=='파일ID') : [...new Set(S.rows.flatMap(r=>Object.keys(r)))];
+  const cell = v => { v=v==null?'':String(v); return /[",\n\r]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; };
+  const text='﻿'+[heads.map(cell).join(',')].concat(S.rows.map(r=>heads.map(h=>cell(r[h])).join(','))).join('\r\n');
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'}));
+  a.download='2026_독일BK_연구교류_사전설문_응답.csv'; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },500);
+}
+
+/* ---------- 화면 전환 ---------- */
+function route(){
+  const admin = location.hash==='#admin';
+  $('surveyView').hidden=admin; $('adminView').hidden=!admin;
+  $('heroEyebrow').textContent = admin ? '관리자 · 대학원전략팀' : '대학원전략처 대학원전략팀';
+  $('heroLede').hidden = admin;
+  $('adminLink').textContent = admin ? '설문으로 돌아가기' : '관리자';
+  $('adminLink').href = admin ? '#' : '#admin';
+  if(admin){
+    const saved=store.get(PW_KEY,true);
+    if(saved && $('dash').hidden){ $('pw').value=saved; $('loginForm').requestSubmit(); }
+    else if(!saved) setTimeout(()=>$('pw').focus(),50);
+  }
+}
+
+/* ---------- 연결 ---------- */
+const form=$('survey');
+form.addEventListener('submit', onSubmit);
+form.addEventListener('input', e=>{ if(e.target.id==='f_email') renderFile(); sync(); counters(); const f=e.target.closest('.field.invalid'); if(f) f.classList.remove('invalid'); refreshNote(); saveDraft(); });
+form.addEventListener('change', e=>{ if(e.target.id==='f_college') buildDepts(); sync(); ['b_q3','b_q4'].forEach(id=>{ if(radio(id==='b_q3'?'q3_avail':'q4_avail')) $(id).classList.remove('invalid'); }); refreshNote(); saveDraft(); });
+$('pickBtn').onclick=()=>$('f_file').click();
+$('f_file').onchange=e=>takeFile(e.target.files[0]);
+const drop=$('drop');
+['dragenter','dragover'].forEach(t=>drop.addEventListener(t,e=>{ e.preventDefault(); drop.classList.add('over'); }));
+['dragleave','drop'].forEach(t=>drop.addEventListener(t,e=>{ e.preventDefault(); drop.classList.remove('over'); }));
+drop.addEventListener('drop',e=>takeFile(e.dataTransfer.files[0]));
+$('loginForm').addEventListener('submit', onLogin);
+$('logoutBtn').onclick=logout;
+$('refreshBtn').onclick=async()=>{ adminMsg(''); try{ await loadAdmin(S.pw); }catch(e){ adminMsg(e&&e.error==='wrong_password'?'로그인이 만료되었습니다. 다시 로그인해 주세요.':'불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요.'); } };
+$('cfgSave').onclick=saveCfg; $('csvBtn').onclick=csv;
+$('list').addEventListener('click', e=>{ const b=e.target.closest('button[data-i]'); if(!b) return; const i=Number(b.dataset.i); S.open = S.open===i?null:i; renderList(); });
+window.addEventListener('hashchange', route);
+
+buildColleges(); applyConfig({});
+try{ const d=JSON.parse(store.get(DRAFT_KEY)||'null'); if(d) fill(d); }catch(e){}
+renderFile();
+sync(); counters(); refreshNote(); route();
+
+if(PREVIEW){
+  setStatus('warn','<strong>미리보기 모드</strong> · 아직 Apps Script가 연결되지 않아 제출해도 저장되지 않습니다. 관리자 화면은 아무 비밀번호로 들어가 예시 응답을 볼 수 있습니다.');
+} else {
+  fetch(SCRIPT_URL).then(r=>r.json()).then(j=>{ if(j&&j.ok) applyConfig(j.config); }).catch(()=>{});
+}
+})();
+</script>
+</body>
+</html>
