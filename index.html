@@ -281,18 +281,18 @@ footer a{color:inherit}
         <textarea id="send_reason" maxlength="800" style="min-height:80px" placeholder="예) 현재 파견 가능한 학생이 없음, 연구과제 일정상 2027년 하반기 이후 가능 등"></textarea></div>
     </div>
 
-    <!-- 2 학생 수용 -->
+    <!-- 2 학생 초청 -->
     <div class="block" id="b_host">
-      <div class="qhead"><span class="qnum">2</span><h2>학생 수용</h2>
-        <p class="hint">방문 기관 학생을 교수님 연구실에서 받으실 수 있는지 알려 주세요. 가능하시면 받을 수 있는 인원·기간·조건을, 어려우시면 이유를 적어 주세요.</p></div>
-      <div class="avail" role="radiogroup" aria-label="학생 수용 가능 여부">
+      <div class="qhead"><span class="qnum">2</span><h2>학생 초청</h2>
+        <p class="hint">방문 기관 학생을 교수님 연구실에 초청하실 수 있는지 알려 주세요. 가능하시면 초청 가능한 인원·기간·조건을, 어려우시면 이유를 적어 주세요.</p></div>
+      <div class="avail" role="radiogroup" aria-label="학생 초청 가능 여부">
         <label class="choice"><input type="radio" name="host_avail" value="가능">가능</label>
         <label class="choice"><input type="radio" name="host_avail" value="조건부 가능">조건부 가능</label>
         <label class="choice"><input type="radio" name="host_avail" value="어려움">어려움</label>
       </div>
       <div class="sub" id="host_sub" hidden>
-        <div class="grid2"><div class="field"><label class="label" for="host_count">받을 수 있는 인원 (명)<span class="req">*</span></label><input type="number" id="host_count" min="1" max="50" inputmode="numeric"></div></div>
-        <div class="field"><span class="label">받을 수 있는 기간<span class="req">*</span><span class="help">여러 개 고르셔도 됩니다</span></span>
+        <div class="grid2"><div class="field"><label class="label" for="host_count">초청 가능 인원 (명)<span class="req">*</span></label><input type="number" id="host_count" min="1" max="50" inputmode="numeric"></div></div>
+        <div class="field"><span class="label">초청 가능 기간<span class="req">*</span><span class="help">여러 개 고르셔도 됩니다</span></span>
           <div class="choices" id="host_durations">
             <label class="choice"><input type="checkbox" value="3~4주">3~4주</label>
             <label class="choice"><input type="checkbox" value="1~3개월">1~3개월</label>
@@ -407,7 +407,7 @@ footer a{color:inherit}
     <div class="kpis">
       <div class="kpi"><b id="k_total">0</b><span>제출한 교수님</span></div>
       <div class="kpi"><b id="k_send">0</b><span>학생 파견 가능 (조건부 포함)</span></div>
-      <div class="kpi"><b id="k_host">0</b><span>학생 수용 가능 (조건부 포함)</span></div>
+      <div class="kpi"><b id="k_host">0</b><span>학생 초청 가능 (조건부 포함)</span></div>
       <div class="kpi"><b id="k_file">0</b><span>상대 연구자·연구실 파악</span></div>
     </div>
 
@@ -443,7 +443,7 @@ footer a{color:inherit}
    ▼▼ Apps Script 배포 후 받은 웹 앱 URL을 따옴표 안에 붙여 넣으세요 ▼▼
    비워 두면 '미리보기 모드'로 동작합니다(저장되지 않음).
    ============================================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwxmYczGPsefO53G5o624LQ21YMKholyjy2TP0QaYpfUvDZykLCWZTuzdWTGMeKtOYfJw/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfS6NmqlHQCvIgMpRXlTFjID-faj2VX8nYMt2Lho3bNbaCwm3E5wfT8alzmEykqFZC/exec";
 /* ============================================================ */
 
 (function(){
@@ -557,10 +557,10 @@ function missing(d){
     if(!d.send_terms.length) m.push(['send_terms','1번 파견 희망 시기']);
     if(!d.send_durations.length) m.push(['send_durations','1번 파견 기간']);
   } else if(!d.send_reason) m.push(['send_reason','1번 어려운 이유']);
-  if(!d.host_avail) m.push(['b_host','2번 수용 가능 여부']);
+  if(!d.host_avail) m.push(['b_host','2번 초청 가능 여부']);
   else if(ok(d.host_avail)){
-    if(!d.host_count) m.push(['host_count','2번 받을 수 있는 인원']);
-    if(!d.host_durations.length) m.push(['host_durations','2번 받을 수 있는 기간']);
+    if(!d.host_count) m.push(['host_count','2번 초청 가능 인원']);
+    if(!d.host_durations.length) m.push(['host_durations','2번 초청 가능 기간']);
   } else if(!d.host_reason) m.push(['host_reason','2번 어려운 이유']);
   if(!d.partner_first) m.push(['partner_first','3번 1순위 기관']);
   if(!d.partner_known) m.push(['partner_known','3번 연구자·연구실']);
@@ -664,12 +664,12 @@ async function onSubmit(ev){
 const SAMPLE = [
   { '접수번호':'BK2026-002','안내메일':'발송 2026-10-20 10:12','성명':'홍길동 (예시)','직위':'부교수','단과대학':'공과대학','학과':'기계공학부','이메일':'example1@hanyang.ac.kr',
     '1.파견 여부':'가능','1.파견 희망 시기':'2026 겨울방학; 2027-1학기','1.파견 기간':'1~3개월',
-    '2.수용 여부':'조건부 가능','2.수용 인원':'2','2.수용 기간':'3~4주','2.수용 조건':'체재비 상대 기관 부담 시',
+    '2.초청 여부':'조건부 가능','2.초청 인원':'2','2.초청 기간':'3~4주','2.초청 조건':'체재비 상대 기관 부담 시',
     '3.1순위 기관':'아헨공대','3.연구자·연구실 파악':'연락한 적 있음','3.연구자·연구실 정보':'아헨공대 ○○○ 교수, ○○ Lab',
     '4.주요 연구 분야':'협동 로봇의 힘 제어, 촉각 센싱','4.연구 키워드':'로봇 매니퓰레이션, 촉각','4.자료 파일명':'홍길동_연구소개.pptx',
     '5.협력 희망 기관':'아헨공대; 율리히 연구소','5.협력 방안':'공동연구 프로젝트; 학생·연구자 교환','최종 수정':'2026-10-20 10:12' },
   { '접수번호':'BK2026-001','안내메일':'발송 2026-10-20 09:40','성명':'김한양 (예시)','직위':'교수','단과대학':'자연과학대학','학과':'화학과','이메일':'example2@hanyang.ac.kr',
-    '1.파견 여부':'어려움','1.어려운 이유·조건':'현재 파견 가능한 학생 없음','2.수용 여부':'가능','2.수용 인원':'1','2.수용 기간':'한 학기',
+    '1.파견 여부':'어려움','1.어려운 이유·조건':'현재 파견 가능한 학생 없음','2.초청 여부':'가능','2.초청 인원':'1','2.초청 기간':'한 학기',
     '3.1순위 기관':'막스플랑크 연구소','3.연구자·연구실 파악':'없음','4.주요 연구 분야':'고체전해질 합성','4.연구 키워드':'이차전지, 고체전해질','최종 수정':'2026-10-20 09:40' }
 ];
 const isYes = v => v==='가능'||v==='조건부 가능';
@@ -678,7 +678,7 @@ function renderList(){
   const L=S.rows;
   $('k_total').textContent=L.length;
   $('k_send').textContent=L.filter(r=>isYes(r['1.파견 여부'])).length;
-  $('k_host').textContent=L.filter(r=>isYes(r['2.수용 여부'])).length;
+  $('k_host').textContent=L.filter(r=>isYes(r['2.초청 여부'])).length;
   $('k_file').textContent=L.filter(r=>r['3.연구자·연구실 파악']==='알고 있음'||r['3.연구자·연구실 파악']==='연락한 적 있음').length;
   const box=$('list');
   if(!L.length){ box.innerHTML='<div class="empty">아직 제출된 응답이 없습니다.</div>'; return; }
@@ -687,7 +687,7 @@ function renderList(){
     return '<div class="card"><button type="button" data-i="'+i+'" aria-expanded="'+open+'">'+
       '<span class="who"><b>'+esc(r['성명'])+(PREVIEW?'<span class="preview-tag">예시</span>':'')+'</b><span class="small">'+esc([r['접수번호'],r['직위']].filter(Boolean).join(' · '))+'</span></span>'+
       '<span class="dept small">'+esc([r['단과대학'],r['학과']].filter(Boolean).join(' · '))+'</span>'+
-      '<span class="pills">'+pill('파견',r['1.파견 여부'])+pill('수용',r['2.수용 여부'])+'</span>'+
+      '<span class="pills">'+pill('파견',r['1.파견 여부'])+pill('초청',r['2.초청 여부'])+'</span>'+
       '<span class="date">'+esc(r['최종 수정']||'')+'</span>'+
     '</button>'+(open?'<div class="detail">'+detail(r)+'</div>':'')+'</div>';
   }).join('');
